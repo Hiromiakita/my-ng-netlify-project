@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ClimaLaboralComponent } from './clima-laboral/clima-laboral.component';
+import { GraficasComponent } from './graficas/graficas.component';
+
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, 
-  { path: 'about', component: AboutComponent }
+  { path: '', component: LandingPageComponent },
+  { path: 'clima-laboral', component: ClimaLaboralComponent },
+  { path: 'resultados', component: GraficasComponent},
+  // Redirect Route
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-  
- }
+export class AppRoutingModule { }
