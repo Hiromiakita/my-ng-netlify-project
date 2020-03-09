@@ -1,0 +1,130 @@
+.header-banner-custom {
+    background-image: url('../images/img-2.png');
+}
+
+.logo {
+    height: 2rem;
+    width: auto;
+}
+
+.flex-nav {
+    display: flex;
+}
+
+.logo-banner {
+    height: 18rem;
+    width: auto;
+}
+.logo-banner-center {
+    height: 1rem;
+    width: auto;
+}
+
+.logo-marca{
+    margin-left: 1rem;
+    color: white;
+}
+
+.black{
+    color: rgba(0, 0, 0, 0.603);
+}
+
+.text-white-trasp{
+    color: rgba(255, 255, 255, 0.432);
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.blue-color {
+    color: #3d85c6 !important;
+}
+
+.pad-top-1 {
+    padding-top: 2rem;
+}
+
+.firma {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.header-height {
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.header-height-cl {
+    height: 90vh;
+    max-height: 90vh;
+    min-height: 400px;
+}
+
+.no-pad-top{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.link-white {
+    color: white;
+}
+.link-white:hover {
+    color: #3d85c6!important;
+}
+
+@media(min-width: 500px){
+    .pad-r-2 {
+        padding-right: 20%;
+    }
+    
+    .pad-l-2 {
+        padding-left: 20%;
+    }
+}
+
+.tab-container.tab-black .tab-text-nav .linea:before{
+    background: #3d85c6;
+}
+
+.but-trans{
+    background-color: transparent;
+    border: none;
+}
+
+.bg-blue{
+    background: #3d85c6;
+}
+
+.white-color{
+    color:white !important
+}
+
+.blue-border:before, .blue-border:after {
+    border-top: 3px #3d86c623 solid;
+}
+
+.white-border:before, .white-border:after {
+    border-top: 3px #ffffff23 solid;
+}
+
+.text-gray-trasp{
+    color: rgba(255, 255, 255, 0.671);
+}
+
+.btn.disabled, .btn:disabled {
+    cursor: not-allowed;
+}
+
+.respuesta{
+    font-weight: 600;
+}
+
+th{
+    font-weight: 300;
+}
+
+.background-blue{
+    background-color: #3d86c646;
+    padding: 1rem;
+}

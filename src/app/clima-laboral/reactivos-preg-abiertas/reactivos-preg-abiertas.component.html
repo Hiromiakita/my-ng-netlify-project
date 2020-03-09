@@ -1,0 +1,10 @@
+
+<div [formGroup]="FormClimaLaboral">
+    <li class="no-vin pt-2" formArrayName="pregAbiertas" *ngFor="let reactivo of pregAbiertas.controls; let i = index">
+        <div class="form-group" [formGroupName]="i">
+            <label for="gpo{{reactivo.controls.numGrupo.value}}-preg{{reactivo.controls.numPreg.value}}">{{ reactivo.controls.reactivo.value }}</label>
+            <textarea class="form-control" name="gpo{{reactivo.controls.numGrupo.value}}-preg{{reactivo.controls.numPreg.value}}"
+            rows="3" formControlName="respuesta"></textarea>
+        </div>
+    </li>
+</div>
