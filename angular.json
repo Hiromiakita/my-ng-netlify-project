@@ -25,7 +25,8 @@
             "aot": true,
             "assets": [
               "src/assets/images/logo-adn.svg",
-              "src/assets"
+              "src/assets",
+              "src/_redirects"
             ],
             "styles": [
               "src/styles.scss",
