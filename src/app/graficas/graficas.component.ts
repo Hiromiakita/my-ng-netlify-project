@@ -9,7 +9,8 @@ import { ProcessDataService } from '../process-data.service';
 })
 export class GraficasComponent implements OnInit {
   sheet: any;
-  tabla;
+  tablaMenor;
+  tablaMayor;
   introduccion = 'El resultado general de la encuesta del clima Organizacional aplicado en CAMARENA del periodo \
   2016 es de 6.71 puntos en una escala de 10 puntos. La areas encuestadas son "Ventas Nuevos", "Administración",\
   "Servicio" y "Refacciones". El area con mayor puntaje "Administración" con un resultado de 7.25 tenienno el area \
@@ -48,8 +49,8 @@ export class GraficasComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerResultados();
-    this.tabla = this.processDataService.reactivosMasAltos;
-    console.log(this.tabla);
+    this.tablaMenor = this.processDataService.reactivosMasBajos;
+    this.tablaMayor = this.processDataService.reactivosMasAltos;
   }
 
   obtenerResultados() {
