@@ -1,9 +1,9 @@
-<table>
-    <thead>
+<table class="table">
+    <thead class="head-style">
         <th *ngFor="let header of tablaInfo.headers"> {{ header }}</th>
     </thead>
     <tbody>
-        <tr *ngFor="let row of tablaInfo.data">
+        <tr *ngFor="let row of tablaInfo.data" class="col-4">
             <td *ngFor="let cell of row">{{ cell }}</td>
         </tr>
     </tbody>
