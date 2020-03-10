@@ -25,9 +25,21 @@
             <div class="contact-container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <p> Los reactivos que se encuentran con MENOR calificación son</p>
-                        <app-tabla [tablaInfo]="tabla"></app-tabla>
-                        <google-chart #chart
+                        <p> <strong>Los reactivos que se encuentran con MENOR calificación son</strong></p>
+                        <app-tabla [tablaInfo]="tablaMenor"></app-tabla>
+                    </div>
+                    <div class="col-lg-12 mt-5 border-top">
+                        <p><strong>Los reactivos que se encuentran con MAYOR calificación son</strong></p>
+                        <app-tabla [tablaInfo]="tablaMayor"></app-tabla>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<google-chart #chart
                             [title]="title"
                             [type]="type"
                             [data]="data"
@@ -37,9 +49,3 @@
                             [height]="height"
                         >
                         </google-chart>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
