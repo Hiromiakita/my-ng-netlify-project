@@ -13,6 +13,7 @@
             <div class="logo-empresa">
               <img class="imagen-empresa col-xs-5 col-sm-5 col-md-5" src="../../assets/images/Dimosa horizontal.jpg" alt="">
             </div>
+            <p class="mt-3 bold">Silao, Guanajuato. 10 de marzo de 2020</p>
           </div>
         </div>
       </section>
@@ -47,7 +48,7 @@
                         *ngIf="limiteInf >= 78 || show"
                       ></app-reactivos-preg-abiertas>
                     </ol>
-                    <div class="btn-container d-flex justify-content-end mb-5 mt-5 row">
+                    <div class="btn-container d-flex justify-content-end mt-5 row">
                       <button type="button"
                         *ngIf="limiteInf!==0"
                         id="btn_prev" class="btn btn-left-arrow ml-3 col-sm-4 mb-3"
@@ -68,6 +69,7 @@
                         data-target="#submitModal">
                         ENVIAR
                       </button>
+                      
                       <!-- Modal -->
                       <!-- Modal -->
                       <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"
@@ -92,6 +94,7 @@
 
                       <p id="error_message"> </p>
                     </div>
+                    <p class="mb-5 text-right">*Es necesario contestar todas las preguntas para que el botón de ENVIAR se habilite.</p>
                   </form>
                 </div>
               </div>

@@ -119,6 +119,7 @@ export class ClimaLaboralComponent implements OnInit {
         document.getElementById('modalBody').innerHTML = 'Gracias por su participación';
         document.getElementById('modalBtn').innerHTML = 'Ok.';
         document.getElementById('modalBtn').className = 'btn btn-primary';
+        window.location.reload();
     })
     .catch(error => {
         this.limiteInf = backupLI;
