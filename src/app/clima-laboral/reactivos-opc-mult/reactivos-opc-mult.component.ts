@@ -18,10 +18,5 @@ export class ReactivosOpcMultComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  newSelected($event, reactivo) {
-    console.log($event);
-    console.log(reactivo);
-  }
-
 }
 
