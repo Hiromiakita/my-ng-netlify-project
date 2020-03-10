@@ -22,8 +22,8 @@ export class ClimaLaboralComponent implements OnInit {
     {value: '', selected: true, disabled: false},
     {value: 'Nunca sucede', selected: false, disabled: false},
     {value: 'Algunas veces sucede', selected: false, disabled: false},
-    {value: 'Con frecuencia sucede', selected: false, disabled: false},
     {value: 'Siempre sucede', selected: false, disabled: false},
+    {value: 'Con frecuencia sucede', selected: false, disabled: false},
   ];
 
   constructor(
@@ -68,10 +68,14 @@ export class ClimaLaboralComponent implements OnInit {
     return reactivosRandom;
   }
 
-  setFormControls() {
+  setFormControls(forceResponse?: string) {
     this.opcMultiple = this.FormClimaLaboral.get('opcMultiple') as FormArray;
     this.reactivos.forEach(reactivo => {
-      this.opcMultiple.push(this.createItem(reactivo.grupoDeMedicion, reactivo.numGrupo, reactivo.numPreg, reactivo.reactivo));
+      this.opcMultiple.push(this.createItem(
+        reactivo.grupoDeMedicion,
+        reactivo.numGrupo, reactivo.numPreg,
+        (forceResponse || reactivo.reactivo)
+      ));
     });
   }
 
