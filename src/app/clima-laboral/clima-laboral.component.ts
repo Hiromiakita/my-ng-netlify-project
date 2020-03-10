@@ -19,7 +19,7 @@ export class ClimaLaboralComponent implements OnInit {
   show = false;
 
   readonly values = [
-    {value: 'Elige una opción', selected: true, disabled: true},
+    {value: 'Elige una opción', selected: true, disabled: false},
     {value: 'Nunca sucede', selected: false, disabled: false},
     {value: 'Algunas veces sucede', selected: false, disabled: false},
     {value: 'Con frecuencia sucede', selected: false, disabled: false},
