@@ -101,8 +101,7 @@ export class ClimaLaboralComponent implements OnInit {
   }
 
   save($event, backupLI, backupLS) {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyr-MmF0E1FVjOU9jWMSonYVKf608KivK5UmFuzPoDwU1XBBQ6U/exec';
-    const form = document.forms['submit-to-google-sheet'];
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzk2ujvnFmYh3I-A6a0nLPlX06aFEUC45C1kkldcA/exec';    const form = document.forms['submit-to-google-sheet'];
     $event.preventDefault();
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(response => {
