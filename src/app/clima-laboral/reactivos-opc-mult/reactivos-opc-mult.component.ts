@@ -17,7 +17,6 @@ export class ReactivosOpcMultComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.reactivo);
   }
 
 }

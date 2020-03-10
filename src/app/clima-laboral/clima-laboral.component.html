@@ -21,7 +21,7 @@
             <div class="contact-container">
               <div class="row">
                 <div class="col-lg-12">
-                  <form [formGroup]="FormClimaLaboral" (ngSubmit)="onSubmit(FormClimaLaboral, $event)" name="submit-to-google-sheet">
+                  <form [formGroup]="FormClimaLaboral" (ngSubmit)="onSubmit($event)" name="submit-to-google-sheet">
                     <app-info-form [informacionPersonal]="FormClimaLaboral.controls.informacionPersonal"></app-info-form>
                     <app-instrucciones></app-instrucciones>
                     <ol id="climaLaboralForm" class="mt-5" start="{{limiteInf>78 ? 79 : limiteInf+1}}">
