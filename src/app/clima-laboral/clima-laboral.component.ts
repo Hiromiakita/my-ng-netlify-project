@@ -107,8 +107,8 @@ export class ClimaLaboralComponent implements OnInit {
     $event.preventDefault();
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(response => {
-        this.limiteInf = backupLI;
-        this.limiteSup = backupLS;
+        this.limiteInf = 0;
+        this.limiteSup = 10;
         this.show = false;
         console.log('Success!', response);
         document.getElementById('modalTitle').innerHTML = 'Guardado';
