@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleSheetsService } from '../google-sheets.service';
+import { ProcessDataService } from '../process-data.service';
 
 @Component({
   selector: 'app-graficas',
@@ -7,6 +8,8 @@ import { GoogleSheetsService } from '../google-sheets.service';
   styleUrls: ['./graficas.component.scss']
 })
 export class GraficasComponent implements OnInit {
+  sheet: any;
+  tabla;
   introduccion = 'El resultado general de la encuesta del clima Organizacional aplicado en CAMARENA del periodo \
   2016 es de 6.71 puntos en una escala de 10 puntos. La areas encuestadas son "Ventas Nuevos", "Administración",\
   "Servicio" y "Refacciones". El area con mayor puntaje "Administración" con un resultado de 7.25 tenienno el area \
@@ -15,10 +18,7 @@ export class GraficasComponent implements OnInit {
   sobre mi Jefe y/o Gerente" con un 4.26 de resultado.  Con la pregunta " Cual es la razón por la que trabajas en \
   la marca" 61 personas contestaron por "Sueldo", 50 personas contestaron "Lealtad a la empresa" y 12 persona \
   contestaron "No tengo otra opción"';
-  tablaInfo = {
-    headers: ['Reactivo, Categoría, Calificación'],
-    data: [{}],
-  };
+
   title = 'Fruits distribution';
    type = 'ComboChart';
    data = [
@@ -43,20 +43,18 @@ export class GraficasComponent implements OnInit {
    height = 400;
   constructor(
     private ggss: GoogleSheetsService,
+    private processDataService: ProcessDataService
   ) { }
 
   ngOnInit(): void {
     this.obtenerResultados();
-  }
-
-  get tablaInfoLlena() {
-    // this.tablaInfo.data.push({});
-    return this.tablaInfo;
+    this.tabla = this.processDataService.reactivosMasAltos;
+    console.log(this.tabla);
   }
 
   obtenerResultados() {
-    this.ggss.getSheet().subscribe(res => {
-      console.log(res.values[10]);
+    return this.ggss.getSheet().subscribe(res => {
+      this.processDataService.set(res);
     });
   }
 
