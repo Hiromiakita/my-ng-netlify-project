@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'clima-laboral', component: ClimaLaboralComponent },
   { path: 'resultados', component: GraficasComponent},
+  { path: 'clima-laboral-dimosa-silao.html', component: ClimaLaboralComponent },
+  
   // Redirect Route
   { path: '**', redirectTo: ''}
 ];
