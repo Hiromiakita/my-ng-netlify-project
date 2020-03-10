@@ -19,6 +19,7 @@ import { preguntasAbiertas } from './clima-laboral/reactivos/preguntasAbiertas';
 export class ReactivosService {
 
   reactivos: { grupoDeMedicion: string, numGrupo: number, numPreg: number, reactivo: string, }[] = [];
+  reactivosAbiertos: { grupoDeMedicion: string, numGrupo: number, numPreg: number, reactivo: string, }[] = [];
   categorias: any;
 
   readonly sentidoDePertenencia = sentidoDePertenencia;
@@ -51,6 +52,11 @@ export class ReactivosService {
     return this.reactivos;
   }
 
+  get obtenerPreguntasAbiertas() {
+    this.initReactivosAbiertos();
+    return this.reactivosAbiertos;
+  }
+
   initCategorias() {
     this.categorias = [
       { 'Sentido de pertenencia': this.sentidoDePertenencia, },
@@ -66,6 +72,19 @@ export class ReactivosService {
       { 'Código de ética y valores': this.eticaYvalores, },
       { Acoso: this.acoso, },
     ];
+  }
+
+  initReactivosAbiertos() {
+    this.preguntasAbiertas.forEach((reactivo: string, index: number) => {
+      this.reactivosAbiertos.push(
+        {
+          grupoDeMedicion: 'Preguntas abiertas',
+          numGrupo: 13,
+          numPreg: index + 1,
+          reactivo,
+        }
+      );
+    });
   }
 
   initReactivos() {

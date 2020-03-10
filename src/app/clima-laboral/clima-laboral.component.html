@@ -29,24 +29,30 @@
                     <app-info-form [informacionPersonal]="FormClimaLaboral.controls.informacionPersonal"></app-info-form>
                     <app-instrucciones></app-instrucciones>
                     <ol id="climaLaboralForm" class="mt-5" start="{{limiteInf>78 ? 79 : limiteInf+1}}">
-                      <li formArrayName="opcMultiple" *ngFor="let reactivo of opcMultiple.controls | slice: limiteInf : limiteSup; let i = index">
+                      <div  *ngIf="limiteInf < 78 || show">
+                        <li formArrayName="opcMultiple" *ngFor="let reactivo of opcMultiple.controls | slice: limiteInf : limiteSup; let i = index">
                           <div class="row" [formGroupName]="i">
                             <div class="col-md-12">
                               <app-reactivos-opc-mult
                                 [reactivo]="reactivo"
                                 [limiteInf]="limiteInf"
                                 [limiteSup]="limiteSup"
-                                [values]="values"
                               ></app-reactivos-opc-mult>
                             </div>
                           </div>
-                      </li>
-                      <app-reactivos-preg-abiertas
-                        [FormClimaLaboral]="FormClimaLaboral"
-                        [limiteInf]="limiteInf"
-                        [limiteSup]="limiteSup"
-                        *ngIf="limiteInf >= 78 || show"
-                      ></app-reactivos-preg-abiertas>
+                        </li>
+                      </div>
+                      <div *ngIf="limiteInf >= 78 || show">
+                        <li class="no-vin pt-2" formArrayName="pregAbiertas" *ngFor="let reactivoAb of pregAbiertas.controls; let i = index">
+                            <div class="form-group" [formGroupName]="i">
+                              <app-reactivos-preg-abiertas
+                                [reactivo]="reactivoAb"
+                                [limiteInf]="limiteInf"
+                                [limiteSup]="limiteSup"
+                              ></app-reactivos-preg-abiertas>
+                            </div>
+                          </li>
+                      </div>
                     </ol>
                     <div class="btn-container d-flex justify-content-end mt-5 row">
                       <button type="button"

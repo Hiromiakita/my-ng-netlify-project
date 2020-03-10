@@ -12,19 +12,13 @@ import { ReactivosService } from '../reactivos.service';
 export class ClimaLaboralComponent implements OnInit {
   FormClimaLaboral: FormGroup;
   opcMultiple: FormArray;
+  pregAbiertas: FormArray;
   reactivos: { grupoDeMedicion: string, numGrupo: number, numPreg: number, reactivo: string, }[] = [];
+  reactivosAbiertos: any;
 
   limiteInf = 0;
   limiteSup = 10;
   show = false;
-
-  readonly values = [
-    {value: '', selected: true, disabled: false},
-    {value: 'Nunca sucede', selected: false, disabled: false},
-    {value: 'Algunas veces sucede', selected: false, disabled: false},
-    {value: 'Siempre sucede', selected: false, disabled: false},
-    {value: 'Con frecuencia sucede', selected: false, disabled: false},
-  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,8 +37,11 @@ export class ClimaLaboralComponent implements OnInit {
 
   ngOnInit() {
     this.reactivos = this.reactivosService.obtenerReactivos;
+    this.reactivosAbiertos = this.reactivosService.obtenerPreguntasAbiertas;
     this.reactivosRandom(this.reactivos);
+    this.reactivosRandom(this.reactivosAbiertos);
     this.setFormControls();
+    this.setPreguntasAbiertasFormControls();
   }
 
   createItem(grupoDeMedicion, grupo, pregunta, reactivo) {
@@ -68,14 +65,21 @@ export class ClimaLaboralComponent implements OnInit {
     return reactivosRandom;
   }
 
-  setFormControls(forceResponse?: string) {
+  setFormControls() {
     this.opcMultiple = this.FormClimaLaboral.get('opcMultiple') as FormArray;
     this.reactivos.forEach(reactivo => {
       this.opcMultiple.push(this.createItem(
         reactivo.grupoDeMedicion,
         reactivo.numGrupo, reactivo.numPreg,
-        (forceResponse || reactivo.reactivo)
+        reactivo.reactivo
       ));
+    });
+  }
+
+  setPreguntasAbiertasFormControls() {
+    this.pregAbiertas = this.FormClimaLaboral.get('pregAbiertas') as FormArray;
+    this.reactivosAbiertos.forEach(reactivo => {
+      this.pregAbiertas.push(this.createItem(reactivo.grupoDeMedicion, reactivo.numGrupo, reactivo.numPreg, reactivo.reactivo));
     });
   }
 

@@ -10,7 +10,6 @@ export class ReactivosOpcMultComponent implements OnInit {
   @Input () reactivo: FormGroup;
   @Input () limiteInf: number;
   @Input () limiteSup: number;
-  @Input () values: any;
 
   constructor(
     private fb: FormBuilder,
