@@ -1,5 +1,10 @@
 <table>
     <thead>
-        <th *ngFor="tablaInfo.headers.length"></th>
+        <th *ngFor="let header of tablaInfo.headers"> {{ header }}</th>
     </thead>
+    <tbody>
+        <tr *ngFor="let row of tablaInfo.data">
+            <td *ngFor="let cell of row">{{ cell }}</td>
+        </tr>
+    </tbody>
 </table>

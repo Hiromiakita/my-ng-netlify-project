@@ -11,6 +11,7 @@ export class TablaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.tablaInfo);
   }
 
 }
