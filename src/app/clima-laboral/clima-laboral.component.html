@@ -10,6 +10,9 @@
               <h2>Clima. <span class="blue-color">Laboral</span></h2>
               <div class="divider-v2 blue-border"></div>
             </div>
+            <div class="logo-empresa">
+              <img class="imagen-empresa col-xs-5 col-sm-5 col-md-5" src="../../assets/images/Dimosa horizontal.jpg" alt="">
+            </div>
           </div>
         </div>
       </section>
@@ -44,24 +47,24 @@
                         *ngIf="limiteInf >= 78 || show"
                       ></app-reactivos-preg-abiertas>
                     </ol>
-                    <div class="btn-container d-flex justify-content-end mb-5 mt-5">
+                    <div class="btn-container d-flex justify-content-end mb-5 mt-5 row">
                       <button type="button"
                         *ngIf="limiteInf!==0"
-                        id="btn_prev" class="btn btn-left-arrow mr-3"
+                        id="btn_prev" class="btn btn-left-arrow ml-3 col-sm-4 mb-3"
                         (click)="prev()"
                       >
                         Anterior
                       </button>
                       <button type="button"
                         *ngIf="!(limiteSup>=90)"
-                        id="btn_next" class="btn btn-arrow mr-3"
+                        id="btn_next" class="btn btn-arrow ml-3 col-sm-4 mb-3"
                         (click)="next()"
                       >
                           Siguiente
                       </button>
                       <button type="submit" [disabled]="FormClimaLaboral.invalid"
                         *ngIf="FormClimaLaboral"
-                        id="btn_sent" class="btn btn-primary btn-alternate btn-arrow" data-toggle="modal"
+                        id="btn_sent" class="btn btn-primary btn-alternate btn-arrow col-sm-4 ml-3 mb-3" data-toggle="modal"
                         data-target="#submitModal">
                         ENVIAR
                       </button>
