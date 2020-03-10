@@ -5,11 +5,13 @@
     <select 
       name="gpo{{reactivo.controls.numGrupo.value}}-preg{{reactivo.controls.numPreg.value}}"
       id="gpo{{reactivo.controls.numGrupo.value}}-preg{{reactivo.controls.numPreg.value}}"
-      class="form-control m-1" formControlName="respuesta"
+      class="form-control m-1" formControlName="respuesta"  (change)="newSelected($event, reactivo)"
     >
-      <option *ngFor="let value of values" [value]="value.value" [disabled]="value.disabled" [selected]="value.selected">
-        {{ value.value }}
-      </option>
+    <option value=""></option>
+    <option value="Nunca sucede">Nunca sucede</option>
+    <option value="Algunas veces sucede">Algunas veces sucede</option>
+    <option value="Con frecuencia sucede">Con frecuencia sucede</option>
+    <option value="Siempre sucede">Siempre sucede</option>
     </select>
   </div>
 </div>
