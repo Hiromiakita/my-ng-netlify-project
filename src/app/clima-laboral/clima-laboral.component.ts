@@ -87,7 +87,7 @@ export class ClimaLaboralComponent implements OnInit {
     this.show = false;
   }
 
-  async onSubmit(FormClimaLaboral, $event) {
+  onSubmit($event) {
     const backupLI = this.limiteInf;
     const backupLS = this.limiteSup;
 
@@ -97,11 +97,13 @@ export class ClimaLaboralComponent implements OnInit {
 
     setTimeout(() => {
       this.save($event, backupLI, backupLS);
-    }, 6000);
+    }, 600);
   }
 
   save($event, backupLI, backupLS) {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzk2ujvnFmYh3I-A6a0nLPlX06aFEUC45C1kkldcA/exec';    const form = document.forms['submit-to-google-sheet'];
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzk2ujvnFmYh3I-A6a0nLPlX06aFEUC45C1kkldcA/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    // console.log(form);
     $event.preventDefault();
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(response => {
@@ -113,6 +115,7 @@ export class ClimaLaboralComponent implements OnInit {
         document.getElementById('modalBody').innerHTML = 'Gracias por su participación';
         document.getElementById('modalBtn').innerHTML = 'Ok.';
         document.getElementById('modalBtn').className = 'btn btn-primary';
+        this.FormClimaLaboral.reset();
     })
     .catch(error => {
         this.limiteInf = backupLI;

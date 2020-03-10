@@ -48,6 +48,7 @@ export class ReactivosService {
   get obtenerReactivos() {
     this.initCategorias();
     this.initReactivos();
+    console.log(this.reactivos);
     return this.reactivos;
   }
 

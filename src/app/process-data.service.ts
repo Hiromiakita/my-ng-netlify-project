@@ -25,37 +25,24 @@ export class ProcessDataService {
       return this.construirTabla('lasts');
     }
 
-    construirTabla(type: string) {
+    construirTabla(tipo: string) {
       let reactivo = '';
       let grupo = '';
       let calif = '';
+      const inicio = tipo === 'top' ? 10 : 16;
+      const fin = tipo === 'top' ? 15 : 20;
       const tabla = {
         headers: ['Reactivo', 'Categoría', 'Calificación'],
         data: [],
       };
-      if ( type === 'top') {
-        for ( let i = 10; i < 15; i++ ) {
-          calif = this.sheet.values[i][0];
-          for (const j of this.reactivos) {
-            if (j.numGrupo.toString() === this.sheet.values[i][1].toString()
-            && j.numPreg.toString() === this.sheet.values[i][2].toString()) {
-              grupo = j.grupoDeMedicion;
-              reactivo = j.reactivo;
-              tabla.data.push([reactivo, grupo, calif]);
-            }
-          }
-        }
-      }
-      if ( type === 'lasts' ) {
-        for ( let i = 10; i < 15; i++ ) {
-          calif = this.sheet.values[i][0];
-          for (const j of this.reactivos) {
-            if (j.numGrupo.toString() === this.sheet.values[i][1].toString()
-            && j.numPreg.toString() === this.sheet.values[i][2].toString()) {
-              grupo = j.grupoDeMedicion;
-              reactivo = j.reactivo;
-              tabla.data.push([reactivo, grupo, calif]);
-            }
+      for ( let i = inicio; i < fin; i++ ) {
+        calif = this.sheet.values[i][0];
+        for (const j of this.reactivos) {
+          if (j.numGrupo.toString() === this.sheet.values[i][1].toString()
+          && j.numPreg.toString() === this.sheet.values[i][2].toString()) {
+            grupo = j.grupoDeMedicion;
+            reactivo = j.reactivo;
+            tabla.data.push([reactivo, grupo, calif]);
           }
         }
       }
