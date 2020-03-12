@@ -29,17 +29,17 @@ export class ProcessDataService {
       let reactivo = '';
       let grupo = '';
       let calif = '';
-      const inicio = tipo === 'top' ? 10 : 16;
-      const fin = tipo === 'top' ? 15 : 20;
+      const inicio = tipo === 'top' ? 11 : 17;
+      const fin = tipo === 'top' ? 16 : 21;
       const tabla = {
         headers: ['Reactivo', 'Categoría', 'Calificación'],
         data: [],
       };
       for ( let i = inicio; i < fin; i++ ) {
-        calif = this.sheet.values[i][0];
+        calif = this.sheet[i][0];
         for (const j of this.reactivos) {
-          if (j.numGrupo.toString() === this.sheet.values[i][1].toString()
-          && j.numPreg.toString() === this.sheet.values[i][2].toString()) {
+          if (j.numGrupo.toString() === this.sheet[i][1].toString()
+          && j.numPreg.toString() === this.sheet[i][2].toString()) {
             grupo = j.grupoDeMedicion;
             reactivo = j.reactivo;
             tabla.data.push([reactivo, grupo, calif]);
