@@ -1,1 +1,26 @@
-<p>analisis-departamento works!</p>
+<h1 class="text-center mt-5">ANÁLISIS POR DEPARTAMENTO</h1>
+    <h2 class="text-center mt-5">DEPARTAMENTO</h2>
+    <div></div>
+    <div class="content-wrapper pb-5">
+        <section class="content-block pb-5" id="reporteGeneral">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p> <strong>Los reactivos que se encuentran con MENOR calificación son</strong></p>
+                            <app-tabla [tablaInfo]="tablaMenor"></app-tabla>
+                        </div>
+                        <div class="col-lg-12 mt-5 pt-5 border-top">
+                            <p><strong>Los reactivos que se encuentran con MAYOR calificación son</strong></p>
+                            <app-tabla [tablaInfo]="tablaMayor"></app-tabla>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-12">
+        <google-chart #chart class="mx-auto" [title]="title" [type]="type" [data]="data" [columnNames]="columnNames"
+            [options]="options" [width]="width" [height]="height">
+        </google-chart>
+    </div>
