@@ -25,6 +25,8 @@ import { GraficasComponent } from './graficas/graficas.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { TablaComponent } from './tabla/tabla.component';
 import { ResultadosComponent } from './resultados/resultados.component';
+import { AnalisisGeneralComponent } from './analisis-general/analisis-general.component';
+import { AnalisisDepartamentoComponent } from './analisis-departamento/analisis-departamento.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { ResultadosComponent } from './resultados/resultados.component';
     GraficasComponent,
     TablaComponent,
     ResultadosComponent,
+    AnalisisGeneralComponent,
+    AnalisisDepartamentoComponent,
   ],
   imports: [
     BrowserModule,
