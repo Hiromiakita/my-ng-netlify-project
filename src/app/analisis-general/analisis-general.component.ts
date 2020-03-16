@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-analisis-general',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./analisis-general.component.scss']
 })
 export class AnalisisGeneralComponent implements OnInit {
+@Input() tablaMayor;
+@Input() tablaMenor;
 
   constructor() { }
 
