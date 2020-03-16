@@ -24,6 +24,7 @@ import { HeaderClimaLaboralComponent } from './clima-laboral/header-clima-labora
 import { GraficasComponent } from './graficas/graficas.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { TablaComponent } from './tabla/tabla.component';
+import { ResultadosComponent } from './resultados/resultados.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { TablaComponent } from './tabla/tabla.component';
     HeaderClimaLaboralComponent,
     GraficasComponent,
     TablaComponent,
+    ResultadosComponent,
   ],
   imports: [
     BrowserModule,
