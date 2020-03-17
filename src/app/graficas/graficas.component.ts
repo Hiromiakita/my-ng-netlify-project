@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleSheetsService } from '../google-sheets.service';
 import { ProcessDataService } from '../process-data.service';
+import { ReactivosService } from '../reactivos.service';
 
 @Component({
   selector: 'app-graficas',
@@ -25,7 +26,8 @@ export class GraficasComponent implements OnInit {
 
   constructor(
     private ggss: GoogleSheetsService,
-    private processDataService: ProcessDataService
+    private processDataService: ProcessDataService,
+    private reactivos: ReactivosService,
   ) { }
 
   ngOnInit(): void {
@@ -40,8 +42,7 @@ export class GraficasComponent implements OnInit {
       this.nombreEmpresa = res.values[1][1];
       this.periodoActual = res.values[2][1];
       this.promedioGeneral = res.values[3][1];
-      console.log(res.values);
-      this.tablaPromedios(res.values);
+      this.tablaPromedios();
     });
   }
 
@@ -53,12 +54,12 @@ export class GraficasComponent implements OnInit {
 
   obtenerResultadosVentas() {}
 
-  tablaPromedios(data) {
-    for (let i = 0; i < data[4].length; i++) {
-      this.data.push([
-        data[4][i], Number(data[5][i])
-      ]);
-    }
+  tablaPromedios() {
+    const data = [];
+    this.reactivos.categorias.forEach((grupo: string, index: number) => {
+      const categoriasKeys = Object.keys(grupo)[0];
+      data.push([categoriasKeys]);
+    });
   }
 
   get textoIntroduccion() {

@@ -35,7 +35,6 @@ export class ResultadosComponent implements OnInit {
       this.periodoActual = res.values[2][1];
       this.promedioGeneral = res.values[3][1];
       console.log(res.values);
-
     });
   }
 
