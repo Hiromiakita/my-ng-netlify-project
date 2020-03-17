@@ -42,8 +42,7 @@ export class GraficasComponent implements OnInit {
       this.nombreEmpresa = res.values[1][1];
       this.periodoActual = res.values[2][1];
       this.promedioGeneral = res.values[3][1];
-      console.log(res.values);
-      this.tablaPromedios(res.values);
+      this.tablaPromedios();
     });
   }
 
@@ -59,10 +58,8 @@ export class GraficasComponent implements OnInit {
     const data = [];
     this.reactivos.categorias.forEach((grupo: string, index: number) => {
       const categoriasKeys = Object.keys(grupo)[0];
-      console.log(categoriasKeys);
       data.push([categoriasKeys]);
     });
-    console.log(data);
   }
 
   get textoIntroduccion() {

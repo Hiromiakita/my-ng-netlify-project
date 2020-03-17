@@ -1,1 +1,16 @@
-<p>resumen-preguntas works!</p>
+<h1 class="text-center mt-5">RESÚMEN PREGUNTAS ABIERTAS</h1>
+<section [formGroup]="resultados" class="pt-5">
+    <select
+        name="preguntasAbiertasResultados" 
+        id="preguntasAbiertasResultados" 
+        class="form-control" 
+        [formControl]="resultados.controls.preguntasAbiertasResultados"
+        (change)="select($event)"
+    >
+        <option [value]="q" *ngFor="let q of preguntasAbiertas">{{ q }}</option>
+    </select>
+
+    <section *ngIf="tablaDeResultados" class="pt-5">
+        <app-tabla [tablaInfo]="tablaDeResultados" class="text-justify"></app-tabla>
+    </section>
+</section>
