@@ -27,6 +27,8 @@ import { TablaComponent } from './tabla/tabla.component';
 import { ResultadosComponent } from './resultados/resultados.component';
 import { AnalisisGeneralComponent } from './analisis-general/analisis-general.component';
 import { AnalisisDepartamentoComponent } from './analisis-departamento/analisis-departamento.component';
+import { ReporteGeneralComponent } from './reporte-general/reporte-general.component';
+import { ResumenPreguntasComponent } from './resumen-preguntas/resumen-preguntas.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { AnalisisDepartamentoComponent } from './analisis-departamento/analisis-
     ResultadosComponent,
     AnalisisGeneralComponent,
     AnalisisDepartamentoComponent,
+    ReporteGeneralComponent,
+    ResumenPreguntasComponent,
   ],
   imports: [
     BrowserModule,
