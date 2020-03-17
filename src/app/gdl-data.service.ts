@@ -3931,8 +3931,8 @@ export class GdlDataService {
         "1.222222222"
       ]
     ]
-  }; 
-  
+  };
+
   resultadosComerVentas = {
     "range": "Resultados_por_Departamento!A1:CJ1000",
     "majorDimension": "ROWS",
@@ -6884,7 +6884,7 @@ export class GdlDataService {
       ]
     ]
   }
-  
+
   resultadosLogistica = {
     "range": "Resultados_por_Departamento!A1:CJ1000",
     "majorDimension": "ROWS",
@@ -9836,7 +9836,7 @@ export class GdlDataService {
       ]
     ]
   };
-  
+
   resultadosTallerAlmacen = {
     "range": "Resultados_por_Departamento!A1:CJ1000",
     "majorDimension": "ROWS",
@@ -10820,7 +10820,7 @@ export class GdlDataService {
       ]
     ]
   }
-  
+
   resultadosTics = {
     "range": "Resultados_por_Departamento!A1:CJ1000",
     "majorDimension": "ROWS",
@@ -11809,16 +11809,59 @@ export class GdlDataService {
 
   getResultadosGenerales() {
     return of(this.resultadosGenerales);
-   }
+  }
 
   getInfoGral() {
     return of(this.infoGral);
   }
 
   getResultadosDepto(depto: string) {
-    if ( depto === 'AdminComer' ) {
+    if (depto === 'AdminComer') {
       return of(this.resultadosAdminComercial);
     }
+  }
+
+  getResultadosAdminComercial() {
+    return of(this.resultadosAdminComercial);
+  }
+
+  getResultadosAdminPostVenta() {
+    return of(this.resultadosAdminPostVenta);
+  }
+
+  getResultadosCapitalHumano() {
+    return of(this.resultadosCapitalHumano)
+  }
+  getResultadosComerVentas() {
+    return of(this.resultadosComerVentas)
+  }
+
+  getResultadosContabilidad() {
+    return of(this.resultadosContabilidad)
+  }
+
+  getResultadosDirStaff() {
+    return of(this.resultadosDirStaff)
+  }
+
+  getResultadosLogistica() {
+    return of(this.resultadosLogistica)
+  }
+
+  getResultadosMantenimiento() {
+    return of(this.resultadosMantenimiento)
+  }
+
+  getResultadosPostVentaOperativa() {
+    return of(this.resultadosPostVentaOperativa)
+  }
+
+  getResultadosTallerAlmacen() {
+    return of(this.resultadosTallerAlmacen)
+  }
+
+  getResultadosTics() {
+    return of(this.resultadosTics)
   }
 }
 

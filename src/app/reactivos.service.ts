@@ -21,6 +21,7 @@ export class ReactivosService {
   reactivos: { grupoDeMedicion: string, numGrupo: number, numPreg: number, reactivo: string, }[] = [];
   reactivosAbiertos: { grupoDeMedicion: string, numGrupo: number, numPreg: number, reactivo: string, }[] = [];
   categorias: any;
+  categoriasList;
 
   readonly sentidoDePertenencia = sentidoDePertenencia;
   readonly desarrollo = desarrollo;
@@ -57,6 +58,23 @@ export class ReactivosService {
     return this.reactivosAbiertos;
   }
 
+  get obtenerListaDeCategorias(){
+    return this.categoriasList = [
+      'Sentido de pertenencia',
+      'Trabajo en equipo',
+      'Jefe Inmediato',
+      'Responsabilidades',
+      'Desarrollo',
+      'Comunicación',
+      'Condiciones y Herramientas',
+      'Pago y prestaciones',
+      'Condiciones Generales',
+      'Reconocimiento',
+      'Código de ética y valores',
+      'Acoso'];
+  }
+
+  
   initCategorias() {
     this.categorias = [
       { 'Sentido de pertenencia': this.sentidoDePertenencia, },

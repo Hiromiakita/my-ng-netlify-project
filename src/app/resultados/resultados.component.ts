@@ -10,20 +10,12 @@ import { ProcessDataService } from '../process-data.service';
 })
 export class ResultadosComponent implements OnInit {
 
-  sheet: any;
   tablaMenor;
   tablaMayor;
   nombreEmpresa: string;
   promedioGeneral: string;
   periodoActual: string;
 
-  title = 'Categorías';
-  type = 'ColumnChart';
-  data = [];
-  columnNames = ['', 'Categoría'];
-   options = {};
-   width = 900;
-   height = 400;
 
   constructor(
     private ggss: GdlDataService,
@@ -43,7 +35,7 @@ export class ResultadosComponent implements OnInit {
       this.periodoActual = res.values[2][1];
       this.promedioGeneral = res.values[3][1];
       console.log(res.values);
-      this.tablaPromedios(res.values);
+
     });
   }
 
@@ -55,13 +47,6 @@ export class ResultadosComponent implements OnInit {
 
   obtenerResultadosVentas() {}
 
-  tablaPromedios(data) {
-    for (let i = 0; i < data[4].length; i++) {
-      this.data.push([
-        data[4][i], Number(data[5][i])
-      ]);
-    }
-  }
 
   get textoIntroduccion() {
     return `El resultado general de la encuesta del clima Organizacional aplicado en ${this.nombreEmpresa} - Guadalajara del periodo \
