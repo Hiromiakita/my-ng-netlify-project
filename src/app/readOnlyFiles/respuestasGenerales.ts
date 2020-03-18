@@ -1,4 +1,4 @@
-export let resultadosGenerales = {
+export let respuestasGenerales = {
     range: 'Sheet1!A1:CJ787',
     majorDimension: 'ROWS',
     values: [
