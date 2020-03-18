@@ -15,10 +15,14 @@ export class ResultadosComponent implements OnInit {
   nombreEmpresa: string;
   promedioGeneral: string;
   periodoActual: string;
-
+  departamentos: string = "";
+  departamentoMasAlto: String;
+  calficacionDepartamentoMasAlto: String;
+  departamentoMasBajo: String;
+  calficacionDepartamentoMasBajo: String;
 
   constructor(
-    private ggss: GdlDataService,
+    private gdlService: GdlDataService,
     private processDataService: ProcessDataService
   ) { }
 
@@ -26,39 +30,47 @@ export class ResultadosComponent implements OnInit {
     this.obtenerResultadosGenerales();
     this.obtenerInfoGeneral();
     this.tablaMenor = this.processDataService.reactivosMasBajos;
-    console.log("tabla menor ",this.tablaMenor);
     this.tablaMayor = this.processDataService.reactivosMasAltos;
-    console.log("tabla mayor ",this.tablaMayor);
   }
 
   obtenerInfoGeneral() {
-    return this.ggss.getInfoGral().subscribe(res => {
-      console.log("INFO GRAL", res.values)
+    return this.gdlService.getInfoGral().subscribe(res => {
       this.nombreEmpresa = res.values[0][1];
-      this.periodoActual = res.values[2][1];
-      this.promedioGeneral = res.values[3][1];
-      console.log(res.values);
+      this.periodoActual = res.values[1][1];
+      this.promedioGeneral = res.values[2][1];
+      for (let i = 0; i < res.values[4].length; i++) {
+        if (i < res.values[4].length - 2) {
+          this.departamentos += res.values[4][i] + ", ";
+        } else if (i < res.values[4].length - 1) {
+          this.departamentos += res.values[4][i] + " y ";
+        } else {
+          this.departamentos += res.values[4][i];
+        }
+      }
+      this.departamentoMasAlto = res.values[7][2];
+      this.calficacionDepartamentoMasAlto = res.values[7][1];
+      this.departamentoMasBajo = res.values[8][2];
+      this.calficacionDepartamentoMasBajo = res.values[8][1];
     });
   }
 
   obtenerResultadosGenerales() {
-    return this.ggss.getResultadosGenerales().subscribe(res => {
+    return this.gdlService.getResultadosGenerales().subscribe(res => {
       this.processDataService.set(res.values);
     });
   }
 
-  obtenerResultadosVentas() {}
-
+  // get textoIntroduccion() {
+  //   return `El resultado general de la encuesta del clima Organizacional aplicado en ${this.nombreEmpresa} del periodo \
+  //   ${this.periodoActual} es de ${this.promedioGeneral} puntos en una escala de 4 puntos. Los departamentos encuestados son: ${this.departamentos}. 
+  //   El área con mayor puntaje ${this.departamentoMasAlto} con un resultado de ${this.calficacionDepartamentoMasAlto} teniendo el área \
+  //   de oportunidad en el rubro de "Instalaciones y recursos financieros" que dio un puntaje de 5.88, el area con \
+  //   puntaje bajo es"Servicio" con un resultado de 5.53, teniendo el area de oportunidad en el rubro de "Percepción \
+  //   sobre mi Jefe y/o Gerente" con un 4.26 de resultado.`
+  // }
 
   get textoIntroduccion() {
-    return `El resultado general de la encuesta del clima Organizacional aplicado en ${this.nombreEmpresa} - Guadalajara del periodo \
-    ${this.periodoActual} es de ${this.promedioGeneral} puntos en una escala de 4 puntos. Los departamentos encuestados son "Ventas Nuevos",\
-    "Administración", "Servicio" y "Refacciones". El area con mayor puntaje "Administración" con un resultado de 7.25 tenienno el area \
-    de oportunidad en el rubro de "Instalaciones y recursos financieros" que dio un puntaje de 5.88, el area con \
-    puntaje bajo es"Servicio" con un resultado de 5.53, teniendo el area de oportunidad en el rubro de "Percepción \
-    sobre mi Jefe y/o Gerente" con un 4.26 de resultado.  Con la pregunta " Cual es la razón por la que trabajas en \
-    la marca" 61 personas contestaron por "Sueldo", 50 personas contestaron "Lealtad a la empresa" y 12 persona \
-    contestaron "No tengo otra opción"`;
+    return `El resultado general de la encuesta del clima Organizacional aplicado en ${this.nombreEmpresa} del periodo \
+    ${this.periodoActual} es de ${this.promedioGeneral} puntos en una escala de 4 puntos. Los departamentos encuestados son: ${this.departamentos}.`
   }
-
 }

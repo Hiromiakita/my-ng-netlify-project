@@ -1035,9 +1035,20 @@ export class GdlDataService {
         "2.91",
         "3.06",
         "2.76"
+      ],
+      [],
+      [
+        "Mayor puntaje",
+        "3.23",
+        "Logística"
+      ],
+      [
+        "Menor puntaje",
+        "2.54",
+        "Administración comercial"
       ]
     ]
-  };  
+  };
 
   resultadosAdminComercial = {
     "range": "Resultados_por_Departamento!A1:CJ1000",

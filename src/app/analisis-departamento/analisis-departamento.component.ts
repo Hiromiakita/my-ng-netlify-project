@@ -80,17 +80,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
     }
   }
 
-  // obtenerPreguntasDpto(){
-  //   this.preguntas = Object.values(this.reactivosService.obtenerCategorias);
-  //   console.log("preguntas", this.preguntas)
-  // }
-  
-  // obtenerReactivos(){
-  //   this.categorias = this.reactivosService.obtenerCategorias;
-  //   console.log("categorías", this.categorias)
-  //   return this.reactivosService.obtenerCategorias;
-  // }
-
   obtenerResultadosDepartamento() {
     if (this.departamentoSeleccionado === "ADMINISTRACIÓN COMERCIAL") {
       return this.gdlService.getResultadosAdminComercial().subscribe(res => {
