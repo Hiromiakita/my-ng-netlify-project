@@ -50,7 +50,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
 
   obtenerInfoGeneral() {
     return this.gdlService.getInfoGral().subscribe(res => {
-      console.log("response", res.values)
       this.infoGral = res.values;
       // this.tablaPromedios(res.values);
     });
@@ -80,10 +79,18 @@ export class AnalisisDepartamentoComponent implements OnInit {
     }
   }
 
+  // obtenerPreguntasDpto(){
+  //   this.preguntas = Object.values(this.reactivosService.obtenerCategorias);
+  //   console.log("preguntas", this.preguntas)
+  // }
+  
+  obtenerReactivos(){
+    this.categorias = this.reactivosService.obtenerListaDeCategorias;
+    return this.reactivosService.obtenerListaDeCategorias;
+  }
   obtenerResultadosDepartamento() {
     if (this.departamentoSeleccionado === "ADMINISTRACIÓN COMERCIAL") {
       return this.gdlService.getResultadosAdminComercial().subscribe(res => {
-        console.log("ADMIN COMER",res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
@@ -157,7 +164,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
 
     } else if (this.departamentoSeleccionado === "ADMINISTRACIÓN POSTVENTA") {
       return this.gdlService.getResultadosAdminPostVenta().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
@@ -231,7 +237,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       
     } else if (this.departamentoSeleccionado === "POSTVENTA OPERATIVA (TECNICOS)") {
       return this.gdlService.getResultadosPostVentaOperativa().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -302,7 +307,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "CAPITAL HUMANO") {
       return this.gdlService.getResultadosCapitalHumano().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -373,7 +377,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "COMERCIAL/ VENTAS") {
       return this.gdlService.getResultadosComerVentas().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -444,7 +447,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "CONTABILIDAD") {
       return this.gdlService.getResultadosContabilidad().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -515,7 +517,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "DIRECCIÓN/ STAFF") {
       return this.gdlService.getResultadosDirStaff().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -586,7 +587,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "LOGÍSTICA") {
       return this.gdlService.getResultadosLogistica().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -657,7 +657,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "MANTENIMIENTO") {
       return this.gdlService.getResultadosMantenimiento().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -728,7 +727,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "POSTVENTA OPERATIVA") {
       return this.gdlService.getResultadosPostVentaOperativa().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -799,7 +797,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "TALLER Y ALMACÉN") {
       return this.gdlService.getResultadosTallerAlmacen().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []
@@ -870,7 +867,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       });
     } else if (this.departamentoSeleccionado === "TIC'S") {
       return this.gdlService.getResultadosTics().subscribe(res => {
-        console.log(res.values);
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         let preg = []

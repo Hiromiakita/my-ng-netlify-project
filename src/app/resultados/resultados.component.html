@@ -31,15 +31,15 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tab-text-nav" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link  big linea" data-toggle="tab" href="#tab1" role="tab">Análisis
+                            <a class="nav-link big linea" data-toggle="tab" href="#tab1" role="tab">Análisis
                                 General</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active big linea" data-toggle="tab" href="#tab2" role="tab">Análisis por
+                            <a class="nav-link big linea" data-toggle="tab" href="#tab2" role="tab">Análisis por
                                 Departamento</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link big linea" data-toggle="tab" href="#tab3" role="tab">Reporte General</a>
+                            <a class="nav-link big linea active" data-toggle="tab" href="#tab3" role="tab">Reporte General</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link big linea" data-toggle="tab" href="#tab4" role="tab">Resumen Preguntas
@@ -47,19 +47,19 @@
                         </li>
                     </ul>
                     <!-- Tab panes -->
-                    <div class="top-m-space tab-content pad-r-2 pad-l-2">
-                        <div class="tab-pane fade " id="tab1" role="tabpanel">
+                    <div class="top-m-space tab-content">
+                        <div class="tab-pane fade" id="tab1" role="tabpanel">
                             <!-- ANÁLISIS GENERAL -->
                             <app-analisis-general [tablaMayor]="tablaMayor" [tablaMenor]="tablaMenor">
                             </app-analisis-general>
 
                         </div>
-                        <div class="tab-pane fade show active" id="tab2" role="tabpanel">
+                        <div class="tab-pane fade" id="tab2" role="tabpanel">
                             <!-- POR DEPARTAMENTO -->
                             <app-analisis-departamento></app-analisis-departamento>
 
                         </div>
-                        <div class="tab-pane fade" id="tab3" role="tabpanel">
+                        <div class="tab-pane fade show active" id="tab3" role="tabpanel">
                             <app-reporte-general></app-reporte-general>
                         </div>
                         <div class="tab-pane fade" id="tab4" role="tabpanel">
