@@ -15,6 +15,7 @@ const routes: Routes = [
     { path: 'analisis-general', component: AnalisisGeneralComponent},
     { path: 'analisis-departamento', component: AnalisisDepartamentoComponent}
   ]},
+  { path: 'resultados-dimosa-silao', component: ResultadosComponent},
   { path: 'clima-laboral-dimosa-silao.html', component: ClimaLaboralComponent },
 
   // Redirect Route
