@@ -26,7 +26,9 @@ export class ResultadosComponent implements OnInit {
     this.obtenerResultadosGenerales();
     this.obtenerInfoGeneral();
     this.tablaMenor = this.processDataService.reactivosMasBajos;
+    console.log("tabla menor ",this.tablaMenor);
     this.tablaMayor = this.processDataService.reactivosMasAltos;
+    console.log("tabla mayor ",this.tablaMayor);
   }
 
   obtenerInfoGeneral() {

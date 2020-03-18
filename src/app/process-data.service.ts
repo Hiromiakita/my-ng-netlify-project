@@ -30,7 +30,9 @@ export class ProcessDataService {
       let grupo = '';
       let calif = '';
       const inicio = tipo === 'top' ? 11 : 17;
-      const fin = tipo === 'top' ? 16 : 21;
+      console.log("inicio", inicio)
+      const fin = tipo === 'top' ? 16 : 22;
+      console.log("fin", fin)
       const tabla = {
         headers: ['Reactivo', 'Categoría', 'Calificación'],
         data: [],
