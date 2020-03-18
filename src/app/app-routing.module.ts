@@ -16,7 +16,7 @@ const routes: Routes = [
     { path: 'analisis-departamento', component: AnalisisDepartamentoComponent}
   ]},
   { path: 'clima-laboral-dimosa-silao.html', component: ClimaLaboralComponent },
-  
+
   // Redirect Route
   { path: '**', redirectTo: ''}
 ];

@@ -58,7 +58,7 @@ export class ReactivosService {
     return this.reactivosAbiertos;
   }
 
-  get obtenerListaDeCategorias(){
+  get obtenerListaDeCategorias() {
     return this.categoriasList = [
       'Sentido de pertenencia',
       'Trabajo en equipo',
@@ -74,10 +74,10 @@ export class ReactivosService {
       'Acoso'];
   }
 
-  get obtenerCategorias(){
+  get obtenerCategorias() {
     return this.categorias;
   }
-  
+
   initCategorias() {
     this.categorias = [
       { 'Sentido de pertenencia': this.sentidoDePertenencia, },

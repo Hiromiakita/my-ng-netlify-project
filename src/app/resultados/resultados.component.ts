@@ -15,11 +15,11 @@ export class ResultadosComponent implements OnInit {
   nombreEmpresa: string;
   promedioGeneral: string;
   periodoActual: string;
-  departamentos: string = "";
-  departamentoMasAlto: String;
-  calficacionDepartamentoMasAlto: String;
-  departamentoMasBajo: String;
-  calficacionDepartamentoMasBajo: String;
+  departamentos = '';
+  departamentoMasAlto: string;
+  calficacionDepartamentoMasAlto: string;
+  departamentoMasBajo: string;
+  calficacionDepartamentoMasBajo: string;
 
   constructor(
     private gdlService: GdlDataService,
@@ -40,9 +40,9 @@ export class ResultadosComponent implements OnInit {
       this.promedioGeneral = res.values[2][1];
       for (let i = 0; i < res.values[4].length; i++) {
         if (i < res.values[4].length - 2) {
-          this.departamentos += res.values[4][i] + ", ";
+          this.departamentos += res.values[4][i] + ', ';
         } else if (i < res.values[4].length - 1) {
-          this.departamentos += res.values[4][i] + " y ";
+          this.departamentos += res.values[4][i] + ' y ';
         } else {
           this.departamentos += res.values[4][i];
         }
@@ -62,7 +62,7 @@ export class ResultadosComponent implements OnInit {
 
   // get textoIntroduccion() {
   //   return `El resultado general de la encuesta del clima Organizacional aplicado en ${this.nombreEmpresa} del periodo \
-  //   ${this.periodoActual} es de ${this.promedioGeneral} puntos en una escala de 4 puntos. Los departamentos encuestados son: ${this.departamentos}. 
+  //   ${this.periodoActual} es de ${this.promedioGeneral} puntos en una escala de 4 puntos. Los departamentos encuestados son: ${this.departamentos}.
   //   El área con mayor puntaje ${this.departamentoMasAlto} con un resultado de ${this.calficacionDepartamentoMasAlto} teniendo el área \
   //   de oportunidad en el rubro de "Instalaciones y recursos financieros" que dio un puntaje de 5.88, el area con \
   //   puntaje bajo es"Servicio" con un resultado de 5.53, teniendo el area de oportunidad en el rubro de "Percepción \
@@ -71,6 +71,6 @@ export class ResultadosComponent implements OnInit {
 
   get textoIntroduccion() {
     return `El resultado general de la encuesta del clima Organizacional aplicado en ${this.nombreEmpresa} del periodo \
-    ${this.periodoActual} es de ${this.promedioGeneral} puntos en una escala de 4 puntos. Los departamentos encuestados son: ${this.departamentos}.`
+    ${this.periodoActual} es de ${this.promedioGeneral} puntos en una escala de 4 puntos. Los departamentos encuestados son: ${this.departamentos}.`;
   }
 }

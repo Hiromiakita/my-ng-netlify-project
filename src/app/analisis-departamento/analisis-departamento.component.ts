@@ -13,7 +13,7 @@ import { ReactivosService } from '../reactivos.service';
 export class AnalisisDepartamentoComponent implements OnInit {
 
   promedioDepartamento;
-  departamentoSeleccionado = "ADMINISTRACIÓN COMERCIAL";
+  departamentoSeleccionado = 'ADMINISTRACIÓN COMERCIAL';
   tablaMenorDpto;
   tablaMayorDpto;
   departamentos;
@@ -66,13 +66,13 @@ export class AnalisisDepartamentoComponent implements OnInit {
   tablaPromedios(numeros) {
     this.reactivosService.categorias.forEach((grupo: string, index: number) => {
       const categoriasKeys = Object.keys(grupo)[0];
-      this.categorias.push(categoriasKeys)
+      this.categorias.push(categoriasKeys);
     });
-    let categoriasLength = Object.values(this.reactivosService.categorias).length
-    for(let i = 0; i < categoriasLength; i ++) {
-      let test = []
-      for(let j = 0; j < numeros[i].length; j ++) {
-                test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], parseInt(numeros[i][j])]);
+    const categoriasLength = Object.values(this.reactivosService.categorias).length;
+    for (let i = 0; i < categoriasLength; i ++) {
+      const test = [];
+      for (let j = 0; j < numeros[i].length; j ++) {
+                test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], parseInt(numeros[i][j], 10)]);
       }
       this.infoGraficas.push(test);
     }
@@ -82,854 +82,854 @@ export class AnalisisDepartamentoComponent implements OnInit {
   //   this.preguntas = Object.values(this.reactivosService.obtenerCategorias);
   //   console.log("preguntas", this.preguntas)
   // }
-  
-  obtenerReactivos(){
+
+  obtenerReactivos() {
     this.categorias = this.reactivosService.obtenerListaDeCategorias;
     return this.reactivosService.obtenerListaDeCategorias;
   }
   obtenerResultadosDepartamento() {
-    if (this.departamentoSeleccionado === "ADMINISTRACIÓN COMERCIAL") {
+    if (this.departamentoSeleccionado === 'ADMINISTRACIÓN COMERCIAL') {
       return this.gdlService.getResultadosAdminComercial().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
         this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
         this.tablaPromedios(this.numerosArreglo);
       });
 
-    } else if (this.departamentoSeleccionado === "ADMINISTRACIÓN POSTVENTA") {
+    } else if (this.departamentoSeleccionado === 'ADMINISTRACIÓN POSTVENTA') {
       return this.gdlService.getResultadosAdminPostVenta().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
         this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
         this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
         this.tablaPromedios(this.numerosArreglo);
       });
-      
-    } else if (this.departamentoSeleccionado === "POSTVENTA OPERATIVA (TECNICOS)") {
+
+    } else if (this.departamentoSeleccionado === 'POSTVENTA OPERATIVA (TECNICOS)') {
       return this.gdlService.getResultadosPostVentaOperativa().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "CAPITAL HUMANO") {
+    } else if (this.departamentoSeleccionado === 'CAPITAL HUMANO') {
       return this.gdlService.getResultadosCapitalHumano().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "COMERCIAL/ VENTAS") {
+    } else if (this.departamentoSeleccionado === 'COMERCIAL/ VENTAS') {
       return this.gdlService.getResultadosComerVentas().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "CONTABILIDAD") {
+    } else if (this.departamentoSeleccionado === 'CONTABILIDAD') {
       return this.gdlService.getResultadosContabilidad().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "DIRECCIÓN/ STAFF") {
+    } else if (this.departamentoSeleccionado === 'DIRECCIÓN/ STAFF') {
       return this.gdlService.getResultadosDirStaff().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "LOGÍSTICA") {
+    } else if (this.departamentoSeleccionado === 'LOGÍSTICA') {
       return this.gdlService.getResultadosLogistica().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "MANTENIMIENTO") {
+    } else if (this.departamentoSeleccionado === 'MANTENIMIENTO') {
       return this.gdlService.getResultadosMantenimiento().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "POSTVENTA OPERATIVA") {
+    } else if (this.departamentoSeleccionado === 'POSTVENTA OPERATIVA') {
       return this.gdlService.getResultadosPostVentaOperativa().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "TALLER Y ALMACÉN") {
+    } else if (this.departamentoSeleccionado === 'TALLER Y ALMACÉN') {
       return this.gdlService.getResultadosTallerAlmacen().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
-    } else if (this.departamentoSeleccionado === "TIC'S") {
+    } else if (this.departamentoSeleccionado === 'TIC\'S') {
       return this.gdlService.getResultadosTics().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
-        let preg = []
-        for(let i = 4; i <= 8; i++){
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 9; i <= 15; i++){
+        for (let i = 9; i <= 15; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
+        preg = [];
 
-        for(let i = 16; i <= 31; i++){
+        for (let i = 16; i <= 31; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 32; i <= 35; i++){
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 36; i <= 42; i++){
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 43; i <= 48; i++){
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 49; i <= 60; i++){
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 61; i <= 63; i++){
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 64; i <= 69; i++){
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 70; i <= 73; i++){
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 74; i <= 78; i++){
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        for(let i = 79; i <= 81; i++){
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
           preg.push(res.values[9][i]);
         }
         this.numerosArreglo.push(preg);
-        preg = []
-        
+        preg = [];
+
         this.tablaPromedios(this.numerosArreglo);
       });
     }

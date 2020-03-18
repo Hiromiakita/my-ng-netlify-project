@@ -11,6 +11,8 @@ import { ReactivosService } from '../reactivos.service';
 export class ReporteGeneralComponent implements OnInit {
   resultadosGenerales = resultadosGenerales;
   metricasGenerales = metricasGenerales;
+  categoriasLista = [];
+  tabla: {headers: [], data: []};
   departamentos = [];
   promedioGeneral: string;
   promediosPorDepto = [];
@@ -18,15 +20,15 @@ export class ReporteGeneralComponent implements OnInit {
   title = 'Categorías';
   type = 'BarChart';
   data = [];
-  columnNames = ['', 'Categoría'];
+  columnNames = ['', 'Departamentos'];
   width = 1100;
   height = 600;
   options = {
     hAxis: {
-       title: 'Departamentos'
+       title: 'Promedios'
     },
     vAxis: {
-       title: 'Promedios'
+       title: 'Departamentos'
     },
     seriesType: 'bars',
     series: {2: {type: 'line'}}
@@ -35,7 +37,7 @@ export class ReporteGeneralComponent implements OnInit {
   tituloGrupos = 'Grupos';
   tipoGrupos = 'ColumnChart';
   datosGrupos = [];
-  columnasGrupos = ['',''];
+  columnasGrupos = ['Promedios', 'Categorías'];
   anchoGrupos = 1100;
   altoGrupos = 500;
 
@@ -45,25 +47,28 @@ export class ReporteGeneralComponent implements OnInit {
     this.departamentos.push(this.resultadosGenerales.values[5]);
     this.promedioGeneral = this.resultadosGenerales.values[3][1];
     this.promediosPorDepto.push(this.resultadosGenerales.values[6]);
-    this.tablaCategorías();
-    this.tablaGrupos();
+    this.graficaCategorías();
+    this.graficaGrupos();
+    this.tablaCategoriasGrupos();
   }
 
   obtenerCategorias() {
-    console.log(this.reactivosService.obtenerListaDeCategorias);
+    this.categoriasLista = this.reactivosService.obtenerListaDeCategorias;
   }
 
-  tablaCategorías() {
+  graficaCategorías() {
     this.departamentos[0].forEach((depto, index) => {
       this.data.push([depto, Number(this.promediosPorDepto[0][index])]);
     });
   }
 
-  tablaGrupos() {
+  graficaGrupos() {
     for (let i = 0; i < this.reactivosService.obtenerListaDeCategorias.length; i++) {
       this.datosGrupos.push([this.reactivosService.obtenerListaDeCategorias[i], Number(this.metricasGenerales.values[i + 25][1])]);
     }
-    console.log(this.datosGrupos);
+  }
+
+  tablaCategoriasGrupos() {
   }
 
 }

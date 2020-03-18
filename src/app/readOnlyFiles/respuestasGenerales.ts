@@ -7484,8 +7484,19 @@ export let resultadosGenerales = {
         'Nunca sucede',
         'Nunca sucede',
         'Algunas veces sucede',
-        '1.- Brindar igualdad según el nivel jerárquico\n 2.- Retirar de la empresa a personal que no quiere mejoras y sabotea los proyectos\n 3.- Daria continuidad a los proyectos de mejora de Dimosa de cualquier índole\n 4.- Comunicación efectiva \n 5.- Buscaría nuevos proyectos o negocios con respecto al manejo de materiales\n 6.- Procesos claros',
-        '1.- Trabajar la comunicación efectiva para retirar la comunicación de pasillo que se vuelve un verdadero problema y des motivación\n 2.- Analizar los sueldos de todas las áreas para mejorarlos si fuera el caso \n 3.- Mejorar en tecnología de los técnicos que brindan el servicio a los clientes \n 4.- Mucha capacitación en Servicio a Clientes para todo el personal \n 5.- Hacer todos procesos de la empresa documentados',
+        '1.- Brindar igualdad según el nivel jerárquico\n \
+        2.- Retirar de la empresa a personal que no quiere mejoras y sabotea los proyectos\n \
+        3.- Daria continuidad a los proyectos de mejora de Dimosa de cualquier índole\n \
+        4.- Comunicación efectiva \n \
+        5.- Buscaría nuevos proyectos o negocios con respecto al manejo de materiales\n \
+        6.- Procesos claros',
+        '1.- Trabajar la comunicación efectiva para retirar la comunicación de \
+        pasillo que se vuelve un verdadero problema y des motivación\n \
+        2.- Analizar los sueldos de todas las áreas para mejorarlos \
+        si fuera el caso \n \
+        3.- Mejorar en tecnología de los técnicos que brindan el servicio a los clientes \n \
+        4.- Mucha capacitación en Servicio a Clientes para todo el personal \n \
+        5.- Hacer todos procesos de la empresa documentados',
         '1.- La comunicación mejorar \n 2.- Buscar nuevo negocios \n 3.- Que analice desde su trinchera la gente que no quiere mejoras y que ha el se la venden de otra forma \n 4.- Seguir luchando para cimentar y crecer a Dimosa \n 5.- Horarios de descanso busca respetarlos',
         '1.- Mejorar en su comunicación \n 2.- Que busquen crecer en lo personal \n 3.- Que se capaciten\n 4.- Que salgan de la zona de confort \n 5.- Que rompan PARADIGMAS en su vida y empresa \n 6.- Que sean felices y combinan mas con sus familias',
         '1.- Que sigamos luchando por un Dimosa mas fuerte\n 2.- Seguir buscando la mejora continua \n 3.- Mas potencia al área de ventas\n 4.- Que se busque la motivación para el personal para que el personal tenga un proyecto de vida en Dimosa'
@@ -7573,11 +7584,13 @@ export let resultadosGenerales = {
         'Algunas veces sucede',
         'Nunca sucede',
         'Nunca sucede',
-        'Quitar gente en puestos de gerencias por amistades ya que.desconocen del puesto y desconocen se apoyan con gentes que estuvo anterior',
+        'Quitar gente en puestos de gerencias por amistades ya que.desconocen del \
+        puesto y desconocen se apoyan con gentes que estuvo anterior',
         'Gerencias ya que están en comunicación manteniendo la misma cultura laboral',
         'Que se capacitarán para el puesto que desempeñan sea con calidad humana',
         'Que se esfuercen por ser mejores como personas y se valoren por qué valen mucho',
-        'Que nuestro director general esté más al pendiente personalmente de los departamentos ya que de él depende el crecimiento de la empresa'
+        'Que nuestro director general esté más al pendiente personalmente \
+        de los departamentos ya que de él depende el crecimiento de la empresa'
       ],
       [
         '09/03/20',
@@ -8107,8 +8120,10 @@ export let resultadosGenerales = {
         'Siempre sucede',
         'Nunca sucede',
         'Nunca sucede',
-        'que todos los empleados estuvieran mas participacion y mas opiniones de como se esta trabajando asi mismo todos estubieramos en el mismo canal',
-        'tener mas comunicacion entre los departamentos por las entregas preguntan por las entregas del dia hay departamentos que se dicen que no los enteraron',
+        'que todos los empleados estuvieran mas participacion y mas opiniones de \
+        como se esta trabajando asi mismo todos estubieramos en el mismo canal',
+        'tener mas comunicacion entre los departamentos por las entregas preguntan \
+        por las entregas del dia hay departamentos que se dicen que no los enteraron',
         'que tenga m as informacion sobre los trabajo y tiempos en las empresas',
         'a los chavon de nuevo ingreso que hay mas motivacion',
         'que valoren mas a su gente que tienen en la empresa'
