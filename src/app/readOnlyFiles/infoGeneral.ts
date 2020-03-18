@@ -1,24 +1,21 @@
-export let resultadosGenerales = {
-    range: 'Departamentos!A1:Z1000',
+export let infoGral = {
+    range: 'Departamentos!A2:Z1000',
     majorDimension: 'ROWS',
     values: [
-        [
-        'TIC\'S'
-        ],
-        [
+      [
         'nombreEmpresa',
-        'Dimosa-Silao'
-        ],
-        [
+        'Dimosa-Gdl'
+      ],
+      [
         'periodoActual',
         '2020'
-        ],
-        [
+      ],
+      [
         'PromGeneral',
-        '2.884188034'
-        ],
-        [],
-        [
+        '2.99'
+      ],
+      [],
+      [
         'Administración comercial',
         'Administración Postventa',
         'Capital Humano',
@@ -30,19 +27,30 @@ export let resultadosGenerales = {
         'Postventa Operativa',
         'Taller y Almacén',
         'TIC\'S'
-        ],
-        [
-        '2.423076923',
-        '2.841880342',
-        '2.487179487',
-        '2.769230769',
-        '2.918803419',
-        '3.083333333',
-        '3.034188034',
-        '2.871794872',
-        '2.851981352',
-        '3.02039627',
-        '2.632478632'
-        ]
+      ],
+      [
+        '2.54',
+        '2.86',
+        '2.59',
+        '3.08',
+        '3.09',
+        '3.06',
+        '3.23',
+        '2.96',
+        '2.91',
+        '3.06',
+        '2.76'
+      ],
+      [],
+      [
+        'Mayor puntaje',
+        '3.23',
+        'Logística'
+      ],
+      [
+        'Menor puntaje',
+        '2.54',
+        'Administración comercial'
+      ]
     ]
-};
+  };

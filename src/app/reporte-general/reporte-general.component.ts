@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { resultadosGenerales } from '../readOnlyFiles/infoGeneral';
-import { metricasGenerales } from '../readOnlyFiles/metricasGenerales';
+import { infoGral } from '../readOnlyFiles/infoGeneral';
+import { resultadosGenerales } from '../readOnlyFiles/resultadosGenerales';
 import { ReactivosService } from '../reactivos.service';
 
 @Component({
@@ -9,10 +9,9 @@ import { ReactivosService } from '../reactivos.service';
   styleUrls: ['./reporte-general.component.scss']
 })
 export class ReporteGeneralComponent implements OnInit {
-  resultadosGenerales = resultadosGenerales;
-  metricasGenerales = metricasGenerales;
+  resultadosGenerales = infoGral;
+  metricasGenerales = resultadosGenerales;
   categoriasLista = [];
-  tabla: {headers: [], data: []};
   departamentos = [];
   promedioGeneral: string;
   promediosPorDepto = [];
@@ -41,14 +40,17 @@ export class ReporteGeneralComponent implements OnInit {
   anchoGrupos = 1100;
   altoGrupos = 500;
 
+  tabla: {headers: any[], data: []};
+
   constructor(private reactivosService: ReactivosService) { }
 
   ngOnInit(): void {
-    this.departamentos.push(this.resultadosGenerales.values[5]);
-    this.promedioGeneral = this.resultadosGenerales.values[3][1];
-    this.promediosPorDepto.push(this.resultadosGenerales.values[6]);
+    this.departamentos.push(this.resultadosGenerales.values[4]);
+    this.promedioGeneral = this.resultadosGenerales.values[2][1];
+    this.promediosPorDepto.push(this.resultadosGenerales.values[5]);
     this.graficaCategorías();
     this.graficaGrupos();
+    this.obtenerCategorias();
     this.tablaCategoriasGrupos();
   }
 
@@ -69,6 +71,13 @@ export class ReporteGeneralComponent implements OnInit {
   }
 
   tablaCategoriasGrupos() {
+    this.tabla = {
+      headers : [ this.categoriasLista ],
+      data: [],
+    };
+    // console.log(this.metricasGenerales.values);
+    // this.metricasGenerales.forEach(element => {
+    // });
   }
 
 }
