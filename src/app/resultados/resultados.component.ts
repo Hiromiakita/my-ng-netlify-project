@@ -26,12 +26,15 @@ export class ResultadosComponent implements OnInit {
     this.obtenerResultadosGenerales();
     this.obtenerInfoGeneral();
     this.tablaMenor = this.processDataService.reactivosMasBajos;
+    console.log("tabla menor ",this.tablaMenor);
     this.tablaMayor = this.processDataService.reactivosMasAltos;
+    console.log("tabla mayor ",this.tablaMayor);
   }
 
   obtenerInfoGeneral() {
     return this.ggss.getInfoGral().subscribe(res => {
-      this.nombreEmpresa = res.values[1][1];
+      console.log("INFO GRAL", res.values)
+      this.nombreEmpresa = res.values[0][1];
       this.periodoActual = res.values[2][1];
       this.promedioGeneral = res.values[3][1];
     });
