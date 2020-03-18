@@ -31,7 +31,8 @@ export class ResultadosComponent implements OnInit {
 
   obtenerInfoGeneral() {
     return this.ggss.getInfoGral().subscribe(res => {
-      this.nombreEmpresa = res.values[1][1];
+      console.log("INFO GRAL", res.values)
+      this.nombreEmpresa = res.values[0][1];
       this.periodoActual = res.values[2][1];
       this.promedioGeneral = res.values[3][1];
       console.log(res.values);
