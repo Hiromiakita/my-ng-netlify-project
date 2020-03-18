@@ -70,7 +70,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
     });
     let categoriasLength = Object.values(this.reactivosService.categorias).length
     for(let i = 0; i < categoriasLength; i ++) {
-      console.log(numeros[i].length)
       let test = []
       for(let j = 0; j < numeros[i].length; j ++) {
                 test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], parseInt(numeros[i][j])]);
@@ -158,7 +157,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
         this.tablaPromedios(this.numerosArreglo);
       });
 
@@ -231,7 +229,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
         this.tablaPromedios(this.numerosArreglo);
       });
       
@@ -302,7 +299,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "CAPITAL HUMANO") {
@@ -372,7 +369,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "COMERCIAL/ VENTAS") {
@@ -442,7 +439,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "CONTABILIDAD") {
@@ -512,7 +509,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "DIRECCIÓN/ STAFF") {
@@ -582,7 +579,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "LOGÍSTICA") {
@@ -652,7 +649,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "MANTENIMIENTO") {
@@ -722,7 +719,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "POSTVENTA OPERATIVA") {
@@ -792,7 +789,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "TALLER Y ALMACÉN") {
@@ -862,7 +859,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     } else if (this.departamentoSeleccionado === "TIC'S") {
@@ -932,7 +929,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         this.numerosArreglo.push(preg);
         preg = []
-        console.log("ARREGLO NUMS", this.numerosArreglo)
+        
         this.tablaPromedios(this.numerosArreglo);
       });
     }
