@@ -74,6 +74,9 @@ export class ReactivosService {
       'Acoso'];
   }
 
+  get obtenerCategorias(){
+    return this.categorias;
+  }
   
   initCategorias() {
     this.categorias = [

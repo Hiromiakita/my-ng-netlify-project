@@ -34,7 +34,6 @@ export class ResultadosComponent implements OnInit {
       this.nombreEmpresa = res.values[1][1];
       this.periodoActual = res.values[2][1];
       this.promedioGeneral = res.values[3][1];
-      console.log(res.values);
     });
   }
 
