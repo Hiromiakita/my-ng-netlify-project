@@ -34,7 +34,7 @@ export class ResumenPreguntasComponent implements OnInit {
   obtenerRespuestasPorPregunta(selection, pregunta) {
     return {
       headers: ['', pregunta],
-      data: this.gdlService.getRespuestas(selection),
+      data: this.gdlService.getRespuestasPregAbiertas(selection),
     };
   }
 

@@ -86,7 +86,7 @@ export class GdlDataService {
   }
 
 
-  getRespuestas(selection) {
+  getRespuestasPregAbiertas(selection) {
     const resultados = [];
     for ( let i = 1; i < respuestasGenerales.values.length; i++) {
       resultados.push([i, respuestasGenerales.values[i][82 + selection]]);

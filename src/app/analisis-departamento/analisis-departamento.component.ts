@@ -20,7 +20,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
   categorias = [];
   preguntasResultado = [];
   preguntas;
-  infoGral;
   nums;
   type = 'ColumnChart';
   data = [];
@@ -32,8 +31,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
   numerosArreglo = [];
   preguntasArreglo = [];
 
-
-
   constructor(
     private gdlService: GdlDataService,
     private processDataService: ProcessDataService,
@@ -41,27 +38,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.obtenerInfoGeneral();
     this.obtenerResultadosDepartamento();
-    this.departamentos = this.infoGral[4];
-    // this.obtenerReactivos();
-    // this.obtenerPreguntasDpto();
   }
-
-  obtenerInfoGeneral() {
-    return this.gdlService.getInfoGral().subscribe(res => {
-      this.infoGral = res.values;
-      // this.tablaPromedios(res.values);
-    });
-  }
-
-  // tablaPromedios(preguntas, num) {
-  //   for (let i = 0; i < num.length; i++) {
-  //     this.data.push([
-  //       preguntas[i], Number(num[i])
-  //     ]);
-  //   }
-  // }
 
   tablaPromedios(numeros) {
     this.reactivosService.categorias.forEach((grupo: string, index: number) => {
@@ -72,21 +50,12 @@ export class AnalisisDepartamentoComponent implements OnInit {
     for (let i = 0; i < categoriasLength; i ++) {
       const test = [];
       for (let j = 0; j < numeros[i].length; j ++) {
-                test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], parseInt(numeros[i][j], 10)]);
+        test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j])]);
       }
       this.infoGraficas.push(test);
     }
   }
 
-  // obtenerPreguntasDpto(){
-  //   this.preguntas = Object.values(this.reactivosService.obtenerCategorias);
-  //   console.log("preguntas", this.preguntas)
-  // }
-
-  obtenerReactivos() {
-    this.categorias = this.reactivosService.obtenerListaDeCategorias;
-    return this.reactivosService.obtenerListaDeCategorias;
-  }
   obtenerResultadosDepartamento() {
     if (this.departamentoSeleccionado === 'ADMINISTRACIÓN COMERCIAL') {
       return this.gdlService.getResultadosAdminComercial().subscribe(res => {
@@ -937,10 +906,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
 
   onChange(evento) {
     this.departamentoSeleccionado = evento;
-    this.obtenerResultadosDepartamento();
-  }
-
-  onChanges() {
     this.obtenerResultadosDepartamento();
   }
 
