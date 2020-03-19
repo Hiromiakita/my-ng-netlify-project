@@ -11,11 +11,7 @@ const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'clima-laboral', component: ClimaLaboralComponent },
   { path: 'resultados', component: GraficasComponent},
-  { path: 'resultados-dimosa-gdl', component: ResultadosComponent, children: [
-    { path: 'analisis-general', component: AnalisisGeneralComponent},
-    { path: 'analisis-departamento', component: AnalisisDepartamentoComponent}
-  ]},
-  { path: 'resultados-dimosa-silao', component: ResultadosComponent},
+  { path: 'resultados-dimosa/:ciudad', component: ResultadosComponent },
   { path: 'clima-laboral-dimosa-silao.html', component: ClimaLaboralComponent },
 
   // Redirect Route

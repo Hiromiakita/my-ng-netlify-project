@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GdlDataService } from '../gdl-data.service';
 import { ProcessDataService } from '../process-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { ProcessDataService } from '../process-data.service';
   styleUrls: ['./resultados.component.scss']
 })
 export class ResultadosComponent implements OnInit {
-
+  ciudad: string;
   tablaMenor;
   tablaMayor;
   nombreEmpresa: string;
@@ -26,11 +27,13 @@ export class ResultadosComponent implements OnInit {
   resumenPregAbiertas = false;
 
   constructor(
+    private route: ActivatedRoute,
     private gdlService: GdlDataService,
     private processDataService: ProcessDataService
   ) { }
 
   ngOnInit(): void {
+    this.ciudad = this.route.snapshot.paramMap.get('ciudad');
     this.obtenerResultadosGenerales();
     this.obtenerInfoGeneral();
     this.tablaMenor = this.processDataService.reactivosMasBajos;
@@ -38,7 +41,7 @@ export class ResultadosComponent implements OnInit {
   }
 
   obtenerInfoGeneral() {
-    return this.gdlService.getInfoGral().subscribe(res => {
+    return this.gdlService.getInfoGral(this.ciudad).subscribe(res => {
       this.nombreEmpresa = res.values[0][1];
       this.periodoActual = res.values[1][1];
       this.promedioGeneral = res.values[2][1];
@@ -59,7 +62,7 @@ export class ResultadosComponent implements OnInit {
   }
 
   obtenerResultadosGenerales() {
-    return this.gdlService.getResultadosGenerales().subscribe(res => {
+    return this.gdlService.getResultadosGenerales(this.ciudad).subscribe(res => {
       this.processDataService.set(res.values);
     });
   }

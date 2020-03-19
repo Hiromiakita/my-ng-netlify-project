@@ -3,6 +3,7 @@ import { infoGral } from '../readOnlyFiles/infoGeneral';
 import { resultadosGenerales } from '../readOnlyFiles/resultadosGenerales';
 import { ReactivosService } from '../reactivos.service';
 import { GdlDataService } from '../gdl-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reporte-general',
@@ -10,6 +11,7 @@ import { GdlDataService } from '../gdl-data.service';
   styleUrls: ['./reporte-general.component.scss']
 })
 export class ReporteGeneralComponent implements OnInit {
+  ciudad: string;
   resultadosGenerales = infoGral;
   metricasGenerales = resultadosGenerales;
   categoriasLista = [];
@@ -52,9 +54,14 @@ export class ReporteGeneralComponent implements OnInit {
 
   tabla: {headers: any[], data: []};
 
-  constructor(private reactivosService: ReactivosService, private gdlService: GdlDataService ) { }
+  constructor(
+    private reactivosService: ReactivosService,
+    private gdlService: GdlDataService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    this.ciudad = this.route.snapshot.paramMap.get('ciudad');
     this.departamentos.push(this.resultadosGenerales.values[4]);
     this.promedioGeneral = this.resultadosGenerales.values[2][1];
     this.promediosPorDepto.push(this.resultadosGenerales.values[5]);
@@ -109,7 +116,7 @@ export class ReporteGeneralComponent implements OnInit {
   }
 
   obtenerResultadosDepartamento() {
-      return this.gdlService.getResultadosGenerales().subscribe(res => {
+      return this.gdlService.getResultadosGenerales(this.ciudad).subscribe(res => {
         this.promedioGral = res.values[22][1];
         let preg = [];
         for (let i = 4; i <= 8; i++) {

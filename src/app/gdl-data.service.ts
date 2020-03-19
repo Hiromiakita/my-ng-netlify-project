@@ -37,20 +37,22 @@ export class GdlDataService {
     return of(respuestasGeneralesSilao);
   }
 
-  getResultadosGenerales() {
-    return of(resultadosGenerales);
+  getResultadosGenerales(ciudad) {
+    if (ciudad === 'gdl') {
+      return of(resultadosGenerales);
+    }
+    if (ciudad === 'silao') {
+      return of(resultadosGeneralesSilao);
+    }
   }
 
-  getResultadosGeneralesSilao() {
-    return of(resultadosGeneralesSilao);
-  }
-
-  getInfoGral() {
-    return of(infoGral);
-  }
-
-  getInfoGralSilao() {
-    return of(infoGralSilao);
+  getInfoGral(ciudad) {
+    if (ciudad === 'gdl') {
+      return of(infoGral);
+    }
+    if (ciudad === 'silao') {
+      return of(infoGralSilao);
+    }
   }
 
   getResultadosDepto(depto: string) {
