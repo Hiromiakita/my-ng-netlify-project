@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { infoGral } from '../readOnlyFiles/infoGeneral';
 import { resultadosGenerales } from '../readOnlyFiles/resultadosGenerales';
 import { ReactivosService } from '../reactivos.service';
+import { GdlDataService } from '../gdl-data.service';
 
 @Component({
   selector: 'app-reporte-general',
@@ -15,6 +16,10 @@ export class ReporteGeneralComponent implements OnInit {
   departamentos = [];
   promedioGeneral: string;
   promediosPorDepto = [];
+  promedioGral: string;
+  numerosArreglo = [];
+  infoGraficas = [];
+  categorias = [];
 
   title = 'Categorías';
   type = 'BarChart';
@@ -33,6 +38,11 @@ export class ReporteGeneralComponent implements OnInit {
     series: {2: {type: 'line'}}
  };
 
+  optionsDpto = {};
+  typeDpto = 'ColumnChart';
+  columnNamesDpto = ['', 'Reactivos'];
+
+
   tituloGrupos = 'Grupos';
   tipoGrupos = 'ColumnChart';
   datosGrupos = [];
@@ -42,7 +52,7 @@ export class ReporteGeneralComponent implements OnInit {
 
   tabla: {headers: any[], data: []};
 
-  constructor(private reactivosService: ReactivosService) { }
+  constructor(private reactivosService: ReactivosService, private gdlService: GdlDataService ) { }
 
   ngOnInit(): void {
     this.departamentos.push(this.resultadosGenerales.values[4]);
@@ -52,6 +62,8 @@ export class ReporteGeneralComponent implements OnInit {
     this.graficaGrupos();
     this.obtenerCategorias();
     this.tablaCategoriasGrupos();
+    this.obtenerResultadosDepartamento();
+
   }
 
   obtenerCategorias() {
@@ -79,5 +91,92 @@ export class ReporteGeneralComponent implements OnInit {
     // this.metricasGenerales.forEach(element => {
     // });
   }
+
+  tablaPromedios(numeros) {
+    this.infoGraficas = [];
+    this.reactivosService.categorias.forEach((grupo: string, index: number) => {
+      const categoriasKeys = Object.keys(grupo)[0];
+      this.categorias.push(categoriasKeys);
+    });
+    const categoriasLength = Object.values(this.reactivosService.categorias).length;
+    for (let i = 0; i < categoriasLength; i ++) {
+      const data = [];
+      for (let j = 0; j < numeros[i].length; j ++) {
+        data.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j])]);
+      }
+      this.infoGraficas.push(data);
+    }
+  }
+
+  obtenerResultadosDepartamento() {
+      return this.gdlService.getResultadosGenerales().subscribe(res => {
+        this.promedioGral = res.values[22][1];
+        let preg = [];
+        for (let i = 4; i <= 8; i++) {
+           preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+
+        for (let i = 9; i <= 15; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+
+        for (let i = 16; i <= 31; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 32; i <= 35; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 36; i <= 42; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 43; i <= 48; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 49; i <= 60; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 61; i <= 63; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 64; i <= 69; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 70; i <= 73; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 74; i <= 78; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        for (let i = 79; i <= 81; i++) {
+          preg.push(res.values[9][i]);
+        }
+        this.numerosArreglo.push(preg);
+        preg = [];
+        this.tablaPromedios(this.numerosArreglo);
+      });
+
+    }
 
 }
