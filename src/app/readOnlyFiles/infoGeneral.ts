@@ -56,42 +56,42 @@ export let infoGral = {
 };
 
 export let infoGralSilao = {
-  "range": "Departamentos!A2:Z1000",
-  "majorDimension": "ROWS",
-  "values": [
+  range: 'Departamentos!A2:Z1000',
+  majorDimension: 'ROWS',
+  values: [
     [
-      "nombreEmpresa",
-      "Dimosa-Gdl"
+      'nombreEmpresa',
+      'Dimosa-Gdl'
     ],
     [
-      "periodoActual",
-      "2020"
+      'periodoActual',
+      '2020'
     ],
     [
-      "PromGeneral",
-      "2.70"
-    ],
-    [],
-    [
-      "Comercial/Ventas",
-      "Postventa",
-      "Postventa Operativa (técnicos)"
-    ],
-    [
-      "2.68",
-      "3",
-      "2.59"
+      'PromGeneral',
+      '2.70'
     ],
     [],
     [
-      "Mayor puntaje",
-      "3",
-      "Postventa"
+      'Comercial/Ventas',
+      'Postventa',
+      'Postventa Operativa (técnicos)'
     ],
     [
-      "Menor puntaje",
-      "2.59",
-      "Postventa Operativa (técnicos)"
+      '2.68',
+      '3',
+      '2.59'
+    ],
+    [],
+    [
+      'Mayor puntaje',
+      '3',
+      'Postventa'
+    ],
+    [
+      'Menor puntaje',
+      '2.59',
+      'Postventa Operativa (técnicos)'
     ]
   ]
-}
+};
