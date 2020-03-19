@@ -27,7 +27,6 @@ export class ProcessDataService {
     }
 
     construirTabla(tipo: string) {
-      console.log(tipo);
       let reactivo = '';
       let grupo = '';
       let calif = '';
@@ -37,8 +36,6 @@ export class ProcessDataService {
         headers: ['Reactivo', 'Categoría', 'Calificación'],
         data: [],
       };
-      console.log(this.reactivos);
-      console.log(this.sheet);
       for ( let i = inicio; i < fin; i++ ) {
         calif = this.sheet[i][0];
         for (const j of this.reactivos) {

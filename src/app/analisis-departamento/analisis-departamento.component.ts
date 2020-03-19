@@ -42,6 +42,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
   }
 
   tablaPromedios(numeros) {
+    this.infoGraficas = [];
+    console.log("test");
     this.reactivosService.categorias.forEach((grupo: string, index: number) => {
       const categoriasKeys = Object.keys(grupo)[0];
       this.categorias.push(categoriasKeys);
@@ -54,6 +56,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
       }
       this.infoGraficas.push(test);
     }
+    console.log("infoGraficas",this.infoGraficas.length)
   }
 
   obtenerResultadosDepartamento() {
@@ -205,6 +208,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosPostVentaOperativa().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -275,6 +280,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosCapitalHumano().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -345,6 +352,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosComerVentas().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -415,6 +424,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosContabilidad().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -485,6 +496,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosDirStaff().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -555,6 +568,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosLogistica().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -625,6 +640,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosMantenimiento().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -695,6 +712,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosPostVentaOperativa().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -765,6 +784,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosTallerAlmacen().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
@@ -835,6 +856,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       return this.gdlService.getResultadosTics().subscribe(res => {
         this.promedioDepartamento = res.values[22][1];
         this.processDataService.set(res.values);
+        this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
+        this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
         let preg = [];
         for (let i = 4; i <= 8; i++) {
            preg.push(res.values[9][i]);
