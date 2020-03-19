@@ -61,7 +61,7 @@ export let infoGralSilao = {
   values: [
     [
       'nombreEmpresa',
-      'Dimosa-Gdl'
+      'Dimosa-Silao'
     ],
     [
       'periodoActual',
