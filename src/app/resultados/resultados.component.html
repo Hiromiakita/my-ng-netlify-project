@@ -32,15 +32,15 @@
                         [analisisGral]="analisisGral"
                         [analisisDeptos]="analisisDeptos"
                         [reporteGral]="reporteGral"
-                        [resumenPregAbiertasr]="resumenPregAbiertasr"
+                        [resumenPregAbiertas]="resumenPregAbiertas"
                         (emitSelection)="handleSelection($event)">
                     ></app-nav-tabs>
                     <!-- Tab panes -->
                     <div class="top-m-space tab-content">
-                        <app-analisis-general *ngIf="analisisGral" [tablaMayor]="tablaMayor" [tablaMenor]="tablaMenor" [ngClass]="{'active': analisisGral}"></app-analisis-general>
-                        <app-analisis-departamento *ngIf="analisisDeptos" [ngClass]="{'active': analisisDeptos}"></app-analisis-departamento>
-                        <app-reporte-general *ngIf="reporteGral" [ngClass]="{'active': reporteGral}"></app-reporte-general>
-                        <app-resumen-preguntas *ngIf="resumenPregAbiertasr" [ngClass]="{'active': resumenPregAbiertasr}"></app-resumen-preguntas>
+                        <app-analisis-general *ngIf="analisisGral" [tablaMayor]="tablaMayor" [tablaMenor]="tablaMenor"></app-analisis-general>
+                        <app-analisis-departamento *ngIf="analisisDeptos"></app-analisis-departamento>
+                        <app-reporte-general *ngIf="reporteGral"></app-reporte-general>
+                        <app-resumen-preguntas *ngIf="resumenPregAbiertas"></app-resumen-preguntas>
                     </div>
                 </div>
             </div>

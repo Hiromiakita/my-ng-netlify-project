@@ -9,7 +9,7 @@ export class NavTabsComponent implements OnInit {
   @Input () analisisGral: boolean;
   @Input () analisisDeptos: boolean;
   @Input () reporteGral: boolean;
-  @Input() resumenPregAbiertasr: boolean;
+  @Input() resumenPregAbiertas: boolean;
 
   /**
    * Output to tell parent component which tab is selected

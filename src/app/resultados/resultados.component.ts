@@ -23,7 +23,7 @@ export class ResultadosComponent implements OnInit {
   analisisGral = true;
   analisisDeptos = false;
   reporteGral = false;
-  resumenPregAbiertasr = false;
+  resumenPregAbiertas = false;
 
   constructor(
     private gdlService: GdlDataService,
@@ -74,7 +74,7 @@ export class ResultadosComponent implements OnInit {
     this.analisisGral = false;
     this.analisisDeptos = false;
     this.reporteGral = false;
-    this.resumenPregAbiertasr = false;
+    this.resumenPregAbiertas = false;
     this[$event] = true;
   }
 }
