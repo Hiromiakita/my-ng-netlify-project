@@ -43,7 +43,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
 
   tablaPromedios(numeros) {
     this.infoGraficas = [];
-    console.log('test');
     this.reactivosService.categorias.forEach((grupo: string, index: number) => {
       const categoriasKeys = Object.keys(grupo)[0];
       this.categorias.push(categoriasKeys);
@@ -56,7 +55,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       }
       this.infoGraficas.push(test);
     }
-    console.log('infoGraficas', this.infoGraficas.length);
   }
 
   obtenerResultadosDepartamento() {

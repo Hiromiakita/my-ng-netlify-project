@@ -20,6 +20,10 @@ export class ResultadosComponent implements OnInit {
   calficacionDepartamentoMasAlto: string;
   departamentoMasBajo: string;
   calficacionDepartamentoMasBajo: string;
+  analisisGral = true;
+  analisisDeptos = false;
+  reporteGral = false;
+  resumenPregAbiertasr = false;
 
   constructor(
     private gdlService: GdlDataService,
@@ -64,5 +68,13 @@ export class ResultadosComponent implements OnInit {
     return `El resultado general de la encuesta del clima Organizacional aplicado en ${this.nombreEmpresa} del periodo \
     ${this.periodoActual} es de ${this.promedioGeneral} puntos en una escala de 4 puntos. \
     Los departamentos encuestados son: ${this.departamentos}.`;
+  }
+
+  handleSelection($event): void {
+    this.analisisGral = false;
+    this.analisisDeptos = false;
+    this.reporteGral = false;
+    this.resumenPregAbiertasr = false;
+    this[$event] = true;
   }
 }

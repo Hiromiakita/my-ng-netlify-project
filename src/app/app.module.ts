@@ -29,6 +29,7 @@ import { AnalisisGeneralComponent } from './analisis-general/analisis-general.co
 import { AnalisisDepartamentoComponent } from './analisis-departamento/analisis-departamento.component';
 import { ReporteGeneralComponent } from './reporte-general/reporte-general.component';
 import { ResumenPreguntasComponent } from './resumen-preguntas/resumen-preguntas.component';
+import { NavTabsComponent } from './resultados/nav-tabs/nav-tabs.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ResumenPreguntasComponent } from './resumen-preguntas/resumen-preguntas
     AnalisisDepartamentoComponent,
     ReporteGeneralComponent,
     ResumenPreguntasComponent,
+    NavTabsComponent,
   ],
   imports: [
     BrowserModule,
