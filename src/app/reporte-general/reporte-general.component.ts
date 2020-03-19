@@ -68,7 +68,6 @@ export class ReporteGeneralComponent implements OnInit {
 
   obtenerCategorias() {
     this.categoriasLista = this.reactivosService.obtenerListaDeCategorias;
-    console.log("categorías lista", this.categoriasLista)
   }
 
   graficaCategorías() {
