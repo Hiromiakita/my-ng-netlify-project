@@ -10,11 +10,12 @@ export class ProcessDataService {
 
   constructor(
     private reactivosService: ReactivosService,
-    ) { }
+    ) {
+      this.reactivos = this.reactivosService.obtenerReactivos;
+    }
 
     set(data: any) {
       this.sheet =  data;
-      this.reactivos = this.reactivosService.obtenerReactivos;
     }
 
     get reactivosMasAltos() {
@@ -26,6 +27,7 @@ export class ProcessDataService {
     }
 
     construirTabla(tipo: string) {
+      console.log(tipo);
       let reactivo = '';
       let grupo = '';
       let calif = '';
@@ -35,11 +37,13 @@ export class ProcessDataService {
         headers: ['Reactivo', 'Categoría', 'Calificación'],
         data: [],
       };
+      console.log(this.reactivos);
+      console.log(this.sheet);
       for ( let i = inicio; i < fin; i++ ) {
         calif = this.sheet[i][0];
         for (const j of this.reactivos) {
-          if (j.numGrupo.toString() === this.sheet[i][1].toString()
-          && j.numPreg.toString() === this.sheet[i][2].toString()) {
+          if ((j.numGrupo.toString() === this.sheet[i][1].toString())
+          && (j.numPreg.toString() === this.sheet[i][2].toString())) {
             grupo = j.grupoDeMedicion;
             reactivo = j.reactivo;
             tabla.data.push([reactivo, grupo, calif]);
