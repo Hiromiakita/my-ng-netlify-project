@@ -46,7 +46,7 @@ export class ReporteGeneralComponent implements OnInit {
   };
   typeDpto = 'ColumnChart';
   columnNamesDpto = ['', 'Reactivos', { role: 'style' }];
-
+  colors = ["red", "orange", "yellow", "green"];
 
   tituloGrupos = 'Grupos';
   tipoGrupos = 'ColumnChart';
@@ -81,35 +81,33 @@ export class ReporteGeneralComponent implements OnInit {
   }
 
   graficaCategorías() {
-    const colors = ["red", "orange", "yellow", "green"];
     let color = "";
     this.departamentos[0].forEach((depto, index) => {
 
       if (this.promediosPorDepto[0][index] <= 1) {
-        color = colors[0];
+        color = this.colors[0];
       } else if (this.promediosPorDepto[0][index] <= 2) {
-        color = colors[1];
+        color = this.colors[1];
       } else if (this.promediosPorDepto[0][index] <= 3) {
-        color = colors[2];
+        color = this.colors[2];
       } else if (this.promediosPorDepto[0][index] <= 4) {
-        color = colors[3];
+        color = this.colors[3];
       }
       this.data.push([depto, Number(this.promediosPorDepto[0][index]), color]);
     });
   }
 
   graficaGrupos() {
-    const colors = ["red", "orange", "yellow", "green"];
     let color = "";
     for (let i = 0; i < this.reactivosService.obtenerListaDeCategorias.length; i++) {
       if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 1) {
-        color = colors[0];
+        color = this.colors[0];
       } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 2) {
-        color = colors[1];
+        color = this.colors[1];
       } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 3) {
-        color = colors[2];
+        color = this.colors[2];
       } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 4) {
-        color = colors[3];
+        color = this.colors[3];
       }
       this.datosGrupos.push([this.reactivosService.obtenerListaDeCategorias[i], Number(this.metricasGenerales.values[i + 25][1]), color]);
     }
@@ -134,17 +132,16 @@ export class ReporteGeneralComponent implements OnInit {
     const categoriasLength = Object.values(this.reactivosService.categorias).length;
     for (let i = 0; i < categoriasLength; i++) {
       const data = [];
-      const colors = ["red", "orange", "yellow", "green"];
       let color = "";
       for (let j = 0; j < numeros[i].length; j++) {
         if(numeros[i][j] <= 1){
-          color = colors[0];
+          color = this.colors[0];
         } else if (numeros[i][j] <= 2){
-          color = colors[1];
+          color = this.colors[1];
         } else if (numeros[i][j] <= 3){
-          color = colors[2];
+          color = this.colors[2];
         } else if (numeros[i][j] <= 4){
-          color = colors[3];
+          color = this.colors[3];
         }
         data.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j]), color]);
       }
