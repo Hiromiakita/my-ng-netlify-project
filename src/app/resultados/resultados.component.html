@@ -38,9 +38,9 @@
                     <!-- Tab panes -->
                     <div class="top-m-space tab-content">
                         <app-analisis-general *ngIf="analisisGral" [tablaMayor]="tablaMayor" [tablaMenor]="tablaMenor"></app-analisis-general>
-                        <app-analisis-departamento [ciudad]="ciudad" *ngIf="analisisDeptos"></app-analisis-departamento>
-                        <app-reporte-general [ciudad]="ciudad" *ngIf="reporteGral"></app-reporte-general>
-                        <app-resumen-preguntas [ciudad]="ciudad" *ngIf="resumenPregAbiertas"></app-resumen-preguntas>
+                        <app-analisis-departamento *ngIf="analisisDeptos"></app-analisis-departamento>
+                        <app-reporte-general *ngIf="reporteGral"></app-reporte-general>
+                        <app-resumen-preguntas *ngIf="resumenPregAbiertas"></app-resumen-preguntas>
                     </div>
                 </div>
             </div>
