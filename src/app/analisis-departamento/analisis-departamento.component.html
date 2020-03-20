@@ -2,7 +2,7 @@
 <div class="d-flex justify-content-center">
     <label for="depto" class="row col-md-12 justify-content-center">
         <select name="departamento" id="departamento" class="form-control col-md-10"
-            (change)="onChange($event.target.value)">
+            (change)="onChange($event.target.value)" *ngIf="ciudad == 'gdl'">
             <option selected>ADMINISTRACIÓN COMERCIAL</option>
             <option>ADMINISTRACIÓN POSTVENTA</option>
             <option>POSTVENTA OPERATIVA (TECNICOS)</option>
@@ -15,6 +15,12 @@
             <option>POSTVENTA OPERATIVA</option>
             <option>TALLER Y ALMACÉN</option>
             <option>TIC'S</option>
+        </select>
+        <select name="departamento" id="departamento" class="form-control col-md-10"
+            (change)="onChange($event.target.value)" *ngIf="ciudad == 'silao'">
+            <option selected>COMERCIAL/VENTAS</option>
+            <option>POSTVENTA</option>
+            <option>POSTVENTA OPERATIVA (TECNICOS)</option>
         </select>
 
     </label>
