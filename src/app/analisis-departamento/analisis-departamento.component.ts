@@ -35,6 +35,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
   numerosArreglo = [];
   preguntasArreglo = [];
   ciudad: string;
+  cambioDpto = 0;
 
   constructor(
     private gdlService: GdlDataService,
@@ -78,11 +79,15 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j]), color]);
       }
+      this.cambioDpto = 0;
       this.infoGraficas.push(test);
     }
+    console.log("arreglo nums", this.numerosArreglo)
+    console.log("info graficas", this.infoGraficas)
   }
 
   obtenerResultadosDepartamento() {
+    this.numerosArreglo = [];
     if(this.ciudad === "gdl"){
       if (this.departamentoSeleccionado === 'ADMINISTRACIÓN COMERCIAL') {
         return this.gdlService.getResultadosAdminComercial().subscribe(res => {
@@ -91,6 +96,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
           this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
           this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
           let preg = [];
+          console.log("valores num obj", res.values[9])
           for (let i = 4; i <= 8; i++) {
              preg.push(res.values[9][i]);
           }
@@ -155,7 +161,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
           preg = [];
           this.tablaPromedios(this.numerosArreglo);
         });
-  
       } else if (this.departamentoSeleccionado === 'ADMINISTRACIÓN POSTVENTA') {
         return this.gdlService.getResultadosAdminPostVenta().subscribe(res => {
           this.promedioDepartamento = res.values[22][1];
@@ -163,6 +168,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
           this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
           this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
           let preg = [];
+          console.log("valores num obj", res.values[9])
           for (let i = 4; i <= 8; i++) {
              preg.push(res.values[9][i]);
           }
@@ -1170,8 +1176,16 @@ export class AnalisisDepartamentoComponent implements OnInit {
   }
 
   onChange(evento) {
+    
     this.departamentoSeleccionado = evento;
-    this.obtenerResultadosDepartamento();
+    this.cambioDpto = 1;
+    setTimeout(()=> {
+      this.obtenerResultadosDepartamento();
+    }, 200)
+    
   }
 
+  onChanges(){
+    this.obtenerResultadosDepartamento();
+  }
 }

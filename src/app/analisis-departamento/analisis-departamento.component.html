@@ -54,7 +54,7 @@
 </div>
 
 <div class="col-lg-12 d-flex flex-column justify-content-center" *ngFor="let categoria of categorias; let i = index">
-    <google-chart class="col-lg-12 d-flex justify-content-center" *ngIf="infoGraficas[i]"
+    <google-chart class="col-lg-12 d-flex justify-content-center" *ngIf="infoGraficas[i] && cambioDpto === 0"
         #chart class="mx-auto" [title]="categorias[i]" [type]="type" [data]="infoGraficas[i]"
         [columnNames]="columnNames" [options]="options" [width]="width" [height]="height">
     </google-chart>
