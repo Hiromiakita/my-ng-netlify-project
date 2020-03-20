@@ -78,7 +78,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
         }
         test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j]), color]);
       }
-      console.log(test)
       this.infoGraficas.push(test);
     }
   }
@@ -950,12 +949,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
         });
       }
     } else if (this.ciudad === "silao"){
-      console.log("Silao");
-      console.log("depto",this.departamentoSeleccionado)
       if (this.departamentoSeleccionado === 'COMERCIAL/VENTAS') {
-        console.log("leyendo select")
         return this.gdlService.getResultadosComerVentasSilao().subscribe(res => {
-          console.log("trayendo info")
           this.promedioDepartamento = res.values[22][1];
           this.processDataService.set(res.values);
           this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
