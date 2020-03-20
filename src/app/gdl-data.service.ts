@@ -123,4 +123,11 @@ export class GdlDataService {
     }
     return resultados;
   }
+  getRespuestasPregAbiertasSilao(selection) {
+    const resultados = [];
+    for ( let i = 1; i < respuestasGeneralesSilao.values.length; i++) {
+      resultados.push([i, respuestasGeneralesSilao.values[i][82 + selection]]);
+    }
+    return resultados;
+  }
 }

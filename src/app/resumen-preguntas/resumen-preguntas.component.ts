@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { preguntasAbiertas } from '../clima-laboral/reactivos/preguntasAbiertas';
 import { GdlDataService } from '../gdl-data.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-resumen-preguntas',
@@ -13,14 +15,19 @@ export class ResumenPreguntasComponent implements OnInit {
   resultados: FormGroup;
   selected = 'preguntasAbiertas[0';
   tablaDeResultados: any;
+  ciudad: string;
+  preguntasAbiertasData = []
 
-  constructor(private gdlService: GdlDataService) {
+  constructor(
+    private gdlService: GdlDataService,
+    private route: ActivatedRoute) {
     this.resultados = new FormGroup({
       preguntasAbiertasResultados: new FormControl(),
     });
    }
 
   ngOnInit(): void {
+    this.ciudad = this.route.snapshot.paramMap.get('ciudad');
   }
 
   select($event) {
@@ -32,9 +39,14 @@ export class ResumenPreguntasComponent implements OnInit {
   get preguntaAbiertaResultado() { return this.resultados.get('preguntasAbiertasResultados').value; }
 
   obtenerRespuestasPorPregunta(selection, pregunta) {
+    if(this.ciudad === "gdl") {
+      this.preguntasAbiertasData = this.gdlService.getRespuestasPregAbiertas(selection);
+    } else if (this.ciudad === "silao"){
+      this.preguntasAbiertasData = this.gdlService.getRespuestasPregAbiertasSilao(selection);
+    }
     return {
       headers: ['', pregunta],
-      data: this.gdlService.getRespuestasPregAbiertas(selection),
+      data: this.preguntasAbiertasData,
     };
   }
 
