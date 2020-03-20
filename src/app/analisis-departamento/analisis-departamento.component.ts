@@ -82,8 +82,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
       this.cambioDpto = 0;
       this.infoGraficas.push(test);
     }
-    console.log("arreglo nums", this.numerosArreglo)
-    console.log("info graficas", this.infoGraficas)
   }
 
   obtenerResultadosDepartamento() {
@@ -96,7 +94,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
           this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
           this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
           let preg = [];
-          console.log("valores num obj", res.values[9])
           for (let i = 4; i <= 8; i++) {
              preg.push(res.values[9][i]);
           }
@@ -168,7 +165,6 @@ export class AnalisisDepartamentoComponent implements OnInit {
           this.tablaMenorDpto = this.processDataService.reactivosMasBajos;
           this.tablaMayorDpto = this.processDataService.reactivosMasAltos;
           let preg = [];
-          console.log("valores num obj", res.values[9])
           for (let i = 4; i <= 8; i++) {
              preg.push(res.values[9][i]);
           }

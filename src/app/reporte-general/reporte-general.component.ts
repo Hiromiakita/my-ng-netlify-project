@@ -100,13 +100,15 @@ export class ReporteGeneralComponent implements OnInit {
   graficaGrupos() {
     let color = "";
     for (let i = 0; i < this.reactivosService.obtenerListaDeCategorias.length; i++) {
-      if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 1) {
+      if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 0) {
         color = this.colors[0];
-      } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 2) {
+      } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 1) {
         color = this.colors[1];
-      } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 3) {
+      } 
+      else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 2) {
         color = this.colors[2];
-      } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 4) {
+      } 
+      else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 3) {
         color = this.colors[3];
       }
       this.datosGrupos.push([this.reactivosService.obtenerListaDeCategorias[i], Number(this.metricasGenerales.values[i + 25][1]), color]);
