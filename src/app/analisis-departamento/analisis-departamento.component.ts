@@ -24,8 +24,11 @@ export class AnalisisDepartamentoComponent implements OnInit {
   nums;
   type = 'ColumnChart';
   data = [];
-  columnNames = ['', 'Categoría'];
-  options = {};
+  data2 = [];
+  columnNames = ['', 'Pregunta', { role: 'style' }];
+  options = {
+    colors: ["transparent"]
+  };
   width = 900;
   height = 400;
   infoGraficas = [];
@@ -48,6 +51,8 @@ export class AnalisisDepartamentoComponent implements OnInit {
       this.departamentoSeleccionado = 'COMERCIAL/VENTAS';
     }
     this.obtenerResultadosDepartamento();
+    this.data2 = [["", 1, 'red'], ["", 1, 'yellow'], ["", 1, 'red']]
+    
   }
 
   tablaPromedios(numeros) {
@@ -59,9 +64,21 @@ export class AnalisisDepartamentoComponent implements OnInit {
     const categoriasLength = Object.values(this.reactivosService.categorias).length;
     for (let i = 0; i < categoriasLength; i ++) {
       const test = [];
+      const colors = ["red", "orange", "yellow", "green"];
+      let color = "";
       for (let j = 0; j < numeros[i].length; j ++) {
-        test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j])]);
+        if(numeros[i][j] <= 1){
+          color = colors[0];
+        } else if (numeros[i][j] <= 2){
+          color = colors[1];
+        } else if (numeros[i][j] <= 3){
+          color = colors[2];
+        } else if (numeros[i][j] <= 4){
+          color = colors[3];
+        }
+        test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j]), color]);
       }
+      console.log(test)
       this.infoGraficas.push(test);
     }
   }

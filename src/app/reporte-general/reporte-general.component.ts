@@ -26,33 +26,36 @@ export class ReporteGeneralComponent implements OnInit {
   title = 'Categorías';
   type = 'BarChart';
   data = [];
-  columnNames = ['', 'Departamentos'];
+  columnNames = ['', 'Departamentos', { role: 'style' }];
   width = 1100;
   height = 600;
   options = {
     hAxis: {
-       title: 'Promedios'
+      title: 'Promedios'
     },
     vAxis: {
-       title: 'Departamentos'
+      title: 'Departamentos'
     },
     seriesType: 'bars',
-    series: {2: {type: 'line'}}
- };
+    series: { 2: { type: 'line' } },
+    colors: ["transparent"]
+  };
 
-  optionsDpto = {};
+  optionsDpto = {
+    colors: ["transparent"]
+  };
   typeDpto = 'ColumnChart';
-  columnNamesDpto = ['', 'Reactivos'];
+  columnNamesDpto = ['', 'Reactivos', { role: 'style' }];
 
 
   tituloGrupos = 'Grupos';
   tipoGrupos = 'ColumnChart';
   datosGrupos = [];
-  columnasGrupos = ['Promedios', 'Categorías'];
+  columnasGrupos = ['Promedios', 'Categorías', { role: 'style' }];
   anchoGrupos = 1100;
   altoGrupos = 500;
 
-  tabla: {headers: any[], data: []};
+  tabla: { headers: any[], data: [] };
 
   constructor(
     private reactivosService: ReactivosService,
@@ -78,20 +81,43 @@ export class ReporteGeneralComponent implements OnInit {
   }
 
   graficaCategorías() {
+    const colors = ["red", "orange", "yellow", "green"];
+    let color = "";
     this.departamentos[0].forEach((depto, index) => {
-      this.data.push([depto, Number(this.promediosPorDepto[0][index])]);
+
+      if (this.promediosPorDepto[0][index] <= 1) {
+        color = colors[0];
+      } else if (this.promediosPorDepto[0][index] <= 2) {
+        color = colors[1];
+      } else if (this.promediosPorDepto[0][index] <= 3) {
+        color = colors[2];
+      } else if (this.promediosPorDepto[0][index] <= 4) {
+        color = colors[3];
+      }
+      this.data.push([depto, Number(this.promediosPorDepto[0][index]), color]);
     });
   }
 
   graficaGrupos() {
+    const colors = ["red", "orange", "yellow", "green"];
+    let color = "";
     for (let i = 0; i < this.reactivosService.obtenerListaDeCategorias.length; i++) {
-      this.datosGrupos.push([this.reactivosService.obtenerListaDeCategorias[i], Number(this.metricasGenerales.values[i + 25][1])]);
+      if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 1) {
+        color = colors[0];
+      } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 2) {
+        color = colors[1];
+      } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 3) {
+        color = colors[2];
+      } else if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 4) {
+        color = colors[3];
+      }
+      this.datosGrupos.push([this.reactivosService.obtenerListaDeCategorias[i], Number(this.metricasGenerales.values[i + 25][1]), color]);
     }
   }
 
   tablaCategoriasGrupos() {
     this.tabla = {
-      headers : [ this.categoriasLista ],
+      headers: [this.categoriasLista],
       data: [],
     };
     // console.log(this.metricasGenerales.values);
@@ -106,84 +132,95 @@ export class ReporteGeneralComponent implements OnInit {
       this.categorias.push(categoriasKeys);
     });
     const categoriasLength = Object.values(this.reactivosService.categorias).length;
-    for (let i = 0; i < categoriasLength; i ++) {
+    for (let i = 0; i < categoriasLength; i++) {
       const data = [];
-      for (let j = 0; j < numeros[i].length; j ++) {
-        data.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j])]);
+      const colors = ["red", "orange", "yellow", "green"];
+      let color = "";
+      for (let j = 0; j < numeros[i].length; j++) {
+        if(numeros[i][j] <= 1){
+          color = colors[0];
+        } else if (numeros[i][j] <= 2){
+          color = colors[1];
+        } else if (numeros[i][j] <= 3){
+          color = colors[2];
+        } else if (numeros[i][j] <= 4){
+          color = colors[3];
+        }
+        data.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j]), color]);
       }
       this.infoGraficas.push(data);
     }
   }
 
   obtenerResultadosDepartamento() {
-      return this.gdlService.getResultadosGenerales(this.ciudad).subscribe(res => {
-        this.promedioGral = res.values[22][1];
-        let preg = [];
-        for (let i = 4; i <= 8; i++) {
-           preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
+    return this.gdlService.getResultadosGenerales(this.ciudad).subscribe(res => {
+      this.promedioGral = res.values[22][1];
+      let preg = [];
+      for (let i = 4; i <= 8; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
 
-        for (let i = 9; i <= 15; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
+      for (let i = 9; i <= 15; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
 
-        for (let i = 16; i <= 31; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 32; i <= 35; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 36; i <= 42; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 43; i <= 48; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 49; i <= 60; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 61; i <= 63; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 64; i <= 69; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 70; i <= 73; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 74; i <= 78; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        for (let i = 79; i <= 81; i++) {
-          preg.push(res.values[9][i]);
-        }
-        this.numerosArreglo.push(preg);
-        preg = [];
-        this.tablaPromedios(this.numerosArreglo);
-      });
+      for (let i = 16; i <= 31; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 32; i <= 35; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 36; i <= 42; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 43; i <= 48; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 49; i <= 60; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 61; i <= 63; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 64; i <= 69; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 70; i <= 73; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 74; i <= 78; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      for (let i = 79; i <= 81; i++) {
+        preg.push(res.values[9][i]);
+      }
+      this.numerosArreglo.push(preg);
+      preg = [];
+      this.tablaPromedios(this.numerosArreglo);
+    });
 
-    }
+  }
 
 }
