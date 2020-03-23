@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { infoGral } from '../readOnlyFiles/infoGeneral';
-import { resultadosGenerales } from '../readOnlyFiles/resultadosGenerales';
+import { infoGral, infoGralSilao } from '../readOnlyFiles/infoGeneral';
+import { resultadosGenerales, resultadosGeneralesSilao } from '../readOnlyFiles/resultadosGenerales';
 import { ReactivosService } from '../reactivos.service';
 import { GdlDataService } from '../gdl-data.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ReporteGeneralComponent implements OnInit {
   ciudad: string;
   resultadosGenerales = infoGral;
+  resultadoGeneralesSilao = infoGralSilao;
   metricasGenerales = resultadosGenerales;
+  metricasGeneralesSilao = resultadosGeneralesSilao;
   categoriasLista = [];
   departamentos = [];
   promedioGeneral: string;
@@ -27,11 +29,16 @@ export class ReporteGeneralComponent implements OnInit {
   type = 'BarChart';
   data = [];
   columnNames = ['', 'Departamentos', { role: 'style' }];
+  // width = 1800;
+  // height = 900;
   width = 1100;
   height = 600;
   options = {
     hAxis: {
-      title: 'Promedios'
+      title: 'Promedios',
+      textStyle : {
+        // fontSize: 9 // or the number you want
+    }
     },
     vAxis: {
       title: 'Departamentos'
@@ -42,7 +49,11 @@ export class ReporteGeneralComponent implements OnInit {
   };
 
   optionsDpto = {
-    colors: ["transparent"]
+    colors: ["transparent"],
+    hAxis: {textStyle : {
+      // fontSize: 9 // or the number you want
+    }
+  }
   };
   typeDpto = 'ColumnChart';
   columnNamesDpto = ['', 'Reactivos', { role: 'style' }];
@@ -65,15 +76,20 @@ export class ReporteGeneralComponent implements OnInit {
 
   ngOnInit(): void {
     this.ciudad = this.route.snapshot.paramMap.get('ciudad');
-    this.departamentos.push(this.resultadosGenerales.values[4]);
-    this.promedioGeneral = this.resultadosGenerales.values[2][1];
-    this.promediosPorDepto.push(this.resultadosGenerales.values[5]);
+    if(this.ciudad === 'gdl'){
+      this.departamentos.push(this.resultadosGenerales.values[4]);
+      this.promedioGeneral = this.resultadosGenerales.values[2][1];
+      this.promediosPorDepto.push(this.resultadosGenerales.values[5]);
+    } else if(this.ciudad === "silao"){
+      this.departamentos.push(this.resultadoGeneralesSilao.values[4]);
+      this.promedioGeneral = this.resultadoGeneralesSilao.values[2][1];
+      this.promediosPorDepto.push(this.resultadoGeneralesSilao.values[5]);
+    }
     this.graficaCategorías();
     this.graficaGrupos();
     this.obtenerCategorias();
     this.tablaCategoriasGrupos();
     this.obtenerResultadosDepartamento();
-
   }
 
   obtenerCategorias() {
@@ -99,6 +115,7 @@ export class ReporteGeneralComponent implements OnInit {
 
   graficaGrupos() {
     let color = "";
+    if(this.ciudad === 'gdl'){
     for (let i = 0; i < this.reactivosService.obtenerListaDeCategorias.length; i++) {
       if (parseInt(this.metricasGenerales.values[i + 25][1]) <= 0) {
         color = this.colors[0];
@@ -112,6 +129,22 @@ export class ReporteGeneralComponent implements OnInit {
         color = this.colors[3];
       }
       this.datosGrupos.push([this.reactivosService.obtenerListaDeCategorias[i], Number(this.metricasGenerales.values[i + 25][1]), color]);
+    }
+    } else if(this.ciudad === 'silao'){
+      for (let i = 0; i < this.reactivosService.obtenerListaDeCategorias.length; i++) {
+        if (parseInt(this.metricasGeneralesSilao.values[i + 25][1]) <= 0) {
+          color = this.colors[0];
+        } else if (parseInt(this.metricasGeneralesSilao.values[i + 25][1]) <= 1) {
+          color = this.colors[1];
+        } 
+        else if (parseInt(this.metricasGeneralesSilao.values[i + 25][1]) <= 2) {
+          color = this.colors[2];
+        } 
+        else if (parseInt(this.metricasGeneralesSilao.values[i + 25][1]) <= 3) {
+          color = this.colors[3];
+        }
+        this.datosGrupos.push([this.reactivosService.obtenerListaDeCategorias[i], Number(this.metricasGeneralesSilao.values[i + 25][1]), color]);
+      }
     }
   }
 

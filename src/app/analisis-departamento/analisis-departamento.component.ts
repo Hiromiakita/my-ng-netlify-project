@@ -27,11 +27,20 @@ export class AnalisisDepartamentoComponent implements OnInit {
   data2 = [];
   columnNames = ['', 'Pregunta', { role: 'style' }];
   options = {
-    colors: ["transparent"]
+    colors: ["transparent"],
+    hAxis : { 
+      textStyle : {          
+        // fontSize: 7 // or the number you want  
+      }
+
+  }
   };
   width = 900;
   height = 400;
+  // width = 1800;
+  // height = 900;
   infoGraficas = [];
+  pregGpo = [];
   numerosArreglo = [];
   preguntasArreglo = [];
   ciudad: string;
@@ -65,6 +74,7 @@ export class AnalisisDepartamentoComponent implements OnInit {
     const categoriasLength = Object.values(this.reactivosService.categorias).length;
     for (let i = 0; i < categoriasLength; i ++) {
       const test = [];
+      // const testPrg = []
       const colors = ["red", "orange", "yellow", "green"];
       let color = "";
       for (let j = 0; j < numeros[i].length; j ++) {
@@ -78,9 +88,27 @@ export class AnalisisDepartamentoComponent implements OnInit {
           color = colors[3];
         }
         test.push([Object.values(Object.values(this.reactivosService.categorias[i])[0])[j], Number(numeros[i][j]), color]);
+        // testPrg.push(Object.values(Object.values(this.reactivosService.categorias[i])[0])[j]);
+         
       }
+      // console.log("length",test.length)
+      // if(test.length > 12){
+      //   console.log("test", test)
+      //   console.log("mayor a 12")
+      //   this.options.hAxis.textStyle.fontSize = 7 // or the number you want
+      //   console.log("font",this.options.hAxis.textStyle.fontSize)
+
+      // } else {
+      //   console.log("test", test)
+
+      //   console.log("menor a 12")
+
+      //   this.options.hAxis.textStyle.fontSize = 100
+      //   console.log("font",this.options.hAxis.textStyle.fontSize)
+      // }
       this.cambioDpto = 0;
       this.infoGraficas.push(test);
+      // this.pregGpo.push(testPrg)
     }
   }
 
