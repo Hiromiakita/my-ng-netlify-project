@@ -30,6 +30,7 @@ import { AnalisisDepartamentoComponent } from './analisis-departamento/analisis-
 import { ReporteGeneralComponent } from './reporte-general/reporte-general.component';
 import { ResumenPreguntasComponent } from './resumen-preguntas/resumen-preguntas.component';
 import { NavTabsComponent } from './resultados/nav-tabs/nav-tabs.component';
+import { MedicionDeRiesgosComponent } from './medicion-de-riesgos/medicion-de-riesgos.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { NavTabsComponent } from './resultados/nav-tabs/nav-tabs.component';
     ReporteGeneralComponent,
     ResumenPreguntasComponent,
     NavTabsComponent,
+    MedicionDeRiesgosComponent,
   ],
   imports: [
     BrowserModule,

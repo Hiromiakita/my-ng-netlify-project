@@ -1,0 +1,612 @@
+<div id="wrapper">
+  <div class="page-wrapper">
+    <app-header-clima-laboral></app-header-clima-laboral>
+    <app-banner-clima-laboral></app-banner-clima-laboral>
+    <div class="content-wrapper">
+      <section class="content-block text-center pt-0 pb-0">
+        <div class="container">
+          <div class="demo-wrapper content-block pb-0">
+            <div class="block-heading">
+              <h2>Medición de. <span class="blue-color">Riesgos</span></h2>
+              <div class="divider-v2 blue-border"></div>
+            </div>
+            <div class="logo-empresa">
+              <img class="imagen-empresa col-xs-5 col-sm-5 col-md-5" src="../../assets/images/Dimosa horizontal.jpg"
+                alt="">
+            </div>
+            <!-- <p class="mt-3 bold">Silao, Guanajuato. 10 de marzo de 2020</p> -->
+          </div>
+        </div>
+      </section>
+    </div>
+    <main>
+      <div class="content-wrapper">
+        <section class="content-block pb-0">
+          <div class="container">
+            <div class="contact-container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <form [formGroup]="FormMedicionRiesgos" name="submit-to-google-sheet" (ngSubmit)="onSubmit($event)">
+                    <div class="form-group">
+                      <label for="inputAddress">Género</label>
+                      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="genero">
+                        <option selected>Género...</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Femenino</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">Fecha ingreso</label>
+                      <div class="row"></div>
+                      <select class="custom-select mr-sm-2 col-sm-3" id="inlineFormCustomSelect" name="año">
+                        <option selected>Año...</option>
+                        <option value="1">2020</option>
+                        <option value="2">2019</option>
+                        <option value="3">2018</option>
+                      </select>
+                      <select class="custom-select mr-sm-2 col-sm-3" id="inlineFormCustomSelect" name="mes">
+                        <option selected>Mes...</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                      </select>
+                      <select class="custom-select mr-sm-2 col-sm-3" id="inlineFormCustomSelect" name="día">
+                        <option selected>Día...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">Nombre Colaborador</label>
+                      <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+                      placeholder="Nombre Colaborador" name="nombre">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">Departamento</label>
+                      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="departamento">
+                        <option selected>Departamento...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">Puesto</label>
+                      <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+                      placeholder="Puesto" name="puesto">
+                    </div>
+                    <p>Atributos a auditar</p>
+                    <ol>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">REQUISICIÓN</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo1" id="atributo1" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo1" id="atributo1"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">CV</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo2" id="atributo2" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo2" id="atributo2"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">DP</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo3" id="atributo3" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo3" id="atributo3"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">ESQUEMA DE PAGO</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo4" id="atributo4" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo4" id="atributo4"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">ACTA DE NACIMIENTO</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo5" id="atributo5" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo5" id="atributo5"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">COMPROBANTE DE DOMICILIO</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo6" id="atributo6" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo6" id="atributo6"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">INE</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo7" id="atributo7" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo7" id="atributo7"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">CURP</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo8" id="atributo8" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo8" id="atributo8"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">RFC</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo9" id="atributo9" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo9" id="atributo9"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">ALTA IMSS</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo10" id="atributo10" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo10" id="atributo10"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">CONTRATO</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo11" id="atributo11" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo11" id="atributo11"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">COMPROBANTE DE ESTUDIOS</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo12" id="atributo12" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo12" id="atributo12"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">CARTA DE POLICÍA</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo13" id="atributo13" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo13" id="atributo13"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">SOCIOECONÓMICO</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo14" id="atributo14" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo14" id="atributo14"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">PSICOMÉTRICOS</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo15" id="atributo15" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo15" id="atributo15"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">AVISO PRIVACIDAD</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo16" id="atributo16" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo16" id="atributo16"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">CONVENIO CONFIDENCIALIDAD</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo17" id="atributo17" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo17" id="atributo17"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">LICENCIA MANEJO</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo18" id="atributo18" value="sí"
+                                   >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo18" id="atributo18"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <fieldset class="form-group">
+                          <div class="row">
+                            <legend class="col-form-label col-sm-6 pt-0">CARTA RECOMENDACIÓN</legend>
+                            <div class="col-sm-6">
+                              <div class="row">
+                                <div class="form-check col-sm-2">
+                                  <input class="form-check-input" type="radio" name="atributo19" id="atributo19" value="sí"
+                                    >
+                                  <label class="form-check-label" for="gridRadios1">
+                                    Sí
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="atributo19" id="atributo19"
+                                    value="no">
+                                  <label class="form-check-label" for="gridRadios2">
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </li>
+                      <li>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Observaciones</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="observaciones"></textarea>
+                        </div>
+                      </li>
+                    </ol>
+
+                    
+
+                    <div class="btn-container d-flex justify-content-end mt-5 row">
+
+                      <button type="submit" id="btn_sent"
+                        class="btn btn-primary btn-alternate btn-arrow col-sm-4 ml-3 mb-3" data-toggle="modal"
+                        data-target="#submitModal">
+                        ENVIAR
+                      </button>
+
+                      <!-- Modal -->
+                      <!-- Modal -->
+                      <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="modalTitle">GUARDANDO</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body" id="modalBody">
+                              Un momento más...
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn" data-dismiss="modal" id="modalBtn"></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <p id="error_message"> </p>
+                    </div>
+                  </form>
+                  <form name="submit-to-google-sheet">
+                    <input name="email" type="email" placeholder="Email" required>
+                    <button type="submit">Send</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+
+<app-footer></app-footer>
