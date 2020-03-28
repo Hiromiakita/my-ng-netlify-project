@@ -31,8 +31,8 @@
                       <label for="inputAddress">Género</label>
                       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="genero">
                         <option selected>Género...</option>
-                        <option value="1">Masculino</option>
-                        <option value="2">Femenino</option>
+                        <option value="m">Masculino</option>
+                        <option value="f">Femenino</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -40,40 +40,34 @@
                       <div class="row"></div>
                       <select class="custom-select mr-sm-2 col-sm-3" id="inlineFormCustomSelect" name="año">
                         <option selected>Año...</option>
-                        <option value="1">2020</option>
-                        <option value="2">2019</option>
-                        <option value="3">2018</option>
+                        <option *ngFor="let value of values" value={{value}}>{{value}}</option>
                       </select>
                       <select class="custom-select mr-sm-2 col-sm-3" id="inlineFormCustomSelect" name="mes">
                         <option selected>Mes...</option>
-                        <option value="1">Enero</option>
-                        <option value="2">Febrero</option>
-                        <option value="3">Marzo</option>
+                        <option *ngFor="let mes of meses" value={{mes}}>{{mes}}</option>
                       </select>
                       <select class="custom-select mr-sm-2 col-sm-3" id="inlineFormCustomSelect" name="día">
                         <option selected>Día...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option *ngFor="let dia of dias" value={{dia}}>{{dia}}</option>
+
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="inputAddress">Nombre Colaborador</label>
                       <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
-                      placeholder="Nombre Colaborador" name="nombre">
+                        placeholder="Nombre Colaborador" name="nombre">
                     </div>
                     <div class="form-group">
                       <label for="inputAddress">Departamento</label>
                       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="departamento">
                         <option selected>Departamento...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        <option *ngFor="let dpto of dptos" value={{dpto}}>{{dpto}}</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="inputAddress">Puesto</label>
                       <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
-                      placeholder="Puesto" name="puesto">
+                        placeholder="Puesto" name="puesto">
                     </div>
                     <p>Atributos a auditar</p>
                     <ol>
@@ -84,8 +78,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo1" id="atributo1" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo1" id="atributo1"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -109,8 +103,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo2" id="atributo2" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo2" id="atributo2"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -134,8 +128,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo3" id="atributo3" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo3" id="atributo3"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -159,8 +153,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo4" id="atributo4" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo4" id="atributo4"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -184,8 +178,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo5" id="atributo5" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo5" id="atributo5"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -209,8 +203,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo6" id="atributo6" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo6" id="atributo6"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -234,8 +228,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo7" id="atributo7" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo7" id="atributo7"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -259,8 +253,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo8" id="atributo8" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo8" id="atributo8"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -284,8 +278,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo9" id="atributo9" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo9" id="atributo9"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -309,8 +303,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo10" id="atributo10" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo10" id="atributo10"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -334,8 +328,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo11" id="atributo11" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo11" id="atributo11"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -359,8 +353,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo12" id="atributo12" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo12" id="atributo12"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -384,8 +378,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo13" id="atributo13" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo13" id="atributo13"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -409,8 +403,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo14" id="atributo14" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo14" id="atributo14"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -434,8 +428,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo15" id="atributo15" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo15" id="atributo15"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -459,8 +453,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo16" id="atributo16" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo16" id="atributo16"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -484,8 +478,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo17" id="atributo17" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo17" id="atributo17"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -509,8 +503,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo18" id="atributo18" value="sí"
-                                   >
+                                  <input class="form-check-input" type="radio" name="atributo18" id="atributo18"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -534,8 +528,8 @@
                             <div class="col-sm-6">
                               <div class="row">
                                 <div class="form-check col-sm-2">
-                                  <input class="form-check-input" type="radio" name="atributo19" id="atributo19" value="sí"
-                                    >
+                                  <input class="form-check-input" type="radio" name="atributo19" id="atributo19"
+                                    value="sí">
                                   <label class="form-check-label" for="gridRadios1">
                                     Sí
                                   </label>
@@ -555,12 +549,13 @@
                       <li>
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Observaciones</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="observaciones"></textarea>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
+                            name="observaciones"></textarea>
                         </div>
                       </li>
                     </ol>
 
-                    
+
 
                     <div class="btn-container d-flex justify-content-end mt-5 row">
 

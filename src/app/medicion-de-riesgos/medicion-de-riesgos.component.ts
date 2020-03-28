@@ -9,6 +9,38 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 })
 export class MedicionDeRiesgosComponent implements OnInit {
   FormMedicionRiesgos: FormGroup;
+  values = [];
+  dptos = [
+    'ADMINISTRACIÓN COMERCIAL',
+    'ADMINISTRACIÓN POSTVENTA',
+    'POSTVENTA OPERATIVA (TECNICOS)',
+    'CAPITAL HUMANO',
+    'COMERCIAL/ VENTAS',
+    'CONTABILIDAD',
+    'DIRECCIÓN/ STAFF',
+    'LOGÍSTICA',
+    'MANTENIMIENTO',
+    'POSTVENTA OPERATIVA',
+    'TALLER Y ALMACÉN',
+    'TIC\'S'
+  ];
+
+  meses = [
+    'enero',
+    'febrero',
+    'marzo',
+    'abirl',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    ' diciembre'
+  ];
+
+  dias = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,6 +58,16 @@ export class MedicionDeRiesgosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.date()
+  }
+
+  date() {
+    for ( let i = 1980; i <= 2020; i ++) {
+      this.values.push(i);
+    }
+    for ( let i = 1; i <= 31; i ++) {
+      this.dias.push(i);
+    }
   }
 
   onSubmit($event) {
